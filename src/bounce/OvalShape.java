@@ -39,6 +39,9 @@ public class OvalShape extends Shape{
         super(x, y, deltaX, deltaY, width, height);
     }
 
+    /**
+     * Paints this OvalShape object using the supplied Painter object.
+     */
     @Override
     public void paint(Painter painter) {
         painter.drawOval(x, y, width, height);
