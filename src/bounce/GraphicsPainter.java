@@ -1,6 +1,6 @@
 package bounce;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 /**
  * Implementation of the Painter interface that delegates drawing to a
@@ -31,5 +31,34 @@ public class GraphicsPainter implements Painter {
      */
     public void drawOval(int x, int y, int width, int height) {
         g.drawOval(x, y, width, height);
+    }
+
+    /**
+     * see bounce.Painter.drawGemShape
+     * draw two types of GemShape by its width parameter
+     * if the width of a Gemshape is less than 40 pixels, the top-left and top-right
+     * vertices are both positioned at point (x+width/2, y). Similarly, the bottom-left and
+     * bottom-right vertices are both positioned at point (x+width/2, y+height). In other
+     * words, “small” GemShapes are four-sided figures.
+     */
+    @Override
+    public void drawGemShape(int x, int y, int width, int height) {
+        Polygon gemShape = new Polygon();
+        if (width < 40) {
+            //add four sides diamond
+            gemShape.addPoint(x + width / 2, y);
+            gemShape.addPoint(x, y + height / 2);
+            gemShape.addPoint(x + width / 2, y + height);
+            gemShape.addPoint(x + width, y + height / 2);
+        } else {
+            //add six sides hexagon
+            gemShape.addPoint(x, y + height / 2);
+            gemShape.addPoint(x + 20, y);
+            gemShape.addPoint(x + width - 20, y);
+            gemShape.addPoint(x + width, y + height / 2);
+            gemShape.addPoint(x + width - 20, y + height);
+            gemShape.addPoint(x + 20, y + height);
+        }
+        g.drawPolygon(gemShape);
     }
 }

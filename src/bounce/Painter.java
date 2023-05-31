@@ -10,12 +10,18 @@ public interface Painter {
      * Draws a rectangle. Parameters x and y specify the top left corner of the
      * oval. Parameters width and height specify its width and height.
      */
-    public void drawRect(int x, int y, int width, int height);
+    void drawRect(int x, int y, int width, int height);
 
     /**
      * Draws an oval. Parameters x and y specify the top left corner of the
      * oval. Parameters width and height specify its width and height.
      */
-    public void drawOval(int x, int y, int width, int height);
+    void drawOval(int x, int y, int width, int height);
+
+    /**
+     * Draws a gemshape. Parameters x and y specify the top left corner of the
+     * oval. Parameters width and height specify its width and height.
+     */
+    void drawGemShape(int x, int y, int width, int height);
 
 }
