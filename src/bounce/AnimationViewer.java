@@ -1,6 +1,6 @@
 package bounce;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -44,10 +44,13 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new RectangleShape(0, 0, 2, 3));
         shapes.add(new RectangleShape(10, 10, 5, 7));
         shapes.add(new OvalShape());
-        shapes.add(new OvalShape(30, 30, -10, -20));
+        shapes.add(new OvalShape(30, 30, 10, 20));
         shapes.add(new OvalShape(20, 70, 5, 5,20,70));
         shapes.add(new GemShape(20, 70,3,6));
         shapes.add(new GemShape(20, 70, 5, 5,70,50));
+        shapes.add(new DynamicRectangleShape(30,50,7,5));
+        shapes.add(new DynamicRectangleShape(100,50,3,5,Color.BLUE));
+        shapes.add(new DynamicRectangleShape(20,70,3,5,70,50,Color.RED));
 
         // Start the animation.
         timer.start();
@@ -74,7 +77,10 @@ public class AnimationViewer extends JPanel implements ActionListener {
         // Progress the animation.
         for (Shape s : shapes) {
             s.paint(painter);
-            s.move(width, height);
+            if(s instanceof DynamicRectangleShape)
+                ((DynamicRectangleShape) s).moveAndCheckBounceoff(width,height);
+            else
+                s.move(width, height);
         }
     }
 

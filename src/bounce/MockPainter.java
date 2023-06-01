@@ -1,5 +1,7 @@
 package bounce;
 
+import java.awt.*;
+
 /**
  * Implementation of the Painter interface that does not actually do any
  * painting. A MockPainter implementation responds to Painter requests by
@@ -11,6 +13,8 @@ package bounce;
 public class MockPainter implements Painter {
     // Internal log.
     private StringBuffer log = new StringBuffer();
+
+    private Color color;
 
     /**
      * Returns the contents of this MockPainter's log.
@@ -42,15 +46,40 @@ public class MockPainter implements Painter {
         if (width < 40) {
             String top = "(" + (x + width / 2) + "," + y + ")";
             String bottom = "(" + (x + width / 2) + "," + (y + height) + ")";
-            log.append("{small " + top + "," + midLeft + "," + midRight + "," + bottom +
+            log.append("{small " + midLeft + "," + top + "," + midRight + "," + bottom +
                     "," + width + "," + height + "}");
         } else {
             String topLeft = "(" + (x + 20) + "," + y + ")";
             String topRight = "(" + (x + width - 20) + "," + y + ")";
-            String bottomLeft= "(" + (x + 20) + "," + (y+height) + ")";
-            String bottomRight = "(" + (x + width - 20) + "," + (y+height) + ")";
-            log.append("{regular " + topLeft + "," + topRight + ","+ midLeft + ","+ midRight +
-                    ","+ bottomLeft + ","+ bottomRight + "," + width + "," + height + "}");
+            String bottomLeft = "(" + (x + 20) + "," + (y + height) + ")";
+            String bottomRight = "(" + (x + width - 20) + "," + (y + height) + ")";
+            log.append("{regular " + midLeft + "," + topLeft + "," + topRight + "," + midRight +
+                    "," + bottomRight + "," + bottomLeft + "," + width + "," + height + "}");
         }
+    }
+
+    @Override
+    public void fillRect(int x, int y, int width, int height) {
+
+    }
+
+    @Override
+    public Color getColor() {
+        return this.color;
+    }
+
+    @Override
+    public void setColor(Color color) {
+        this.color = color;
+
+    }
+
+    @Override
+    public void drawDynamicRectangle(int x, int y, int width, int height, boolean isSolid) {
+        if (isSolid)
+            log.append("(fill rectangle " + x + "," + y + "," + width + "," + height + ")");
+        else
+            log.append("(draw rectangle " + x + "," + y + "," + width + "," + height + ")");
+
     }
 }

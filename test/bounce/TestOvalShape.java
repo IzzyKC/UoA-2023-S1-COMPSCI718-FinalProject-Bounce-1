@@ -68,14 +68,14 @@ public class TestOvalShape {
      */
     @Test
     public void testShapeMoveWithBounceOffTop() {
-        RectangleShape shape = new RectangleShape(20, 75, 0, 15);
+        RectangleShape shape = new RectangleShape(20, 75, 0, -15);
         shape.paint(painter);
         shape.move(100, 120);
         shape.paint(painter);
         shape.move(100, 120);
         shape.paint(painter);
-        assertEquals("(rectangle 20,75,25,35)(rectangle 20,85,25,35)"
-                + "(rectangle 20,70,25,35)", painter.toString());
+        assertEquals("(rectangle 20,75,25,35)(rectangle 20,60,25,35)"
+                + "(rectangle 20,45,25,35)", painter.toString());
     }
 
     /**
@@ -84,14 +84,14 @@ public class TestOvalShape {
      */
     @Test
     public void testShapeMoveWithBounceOffBottom() {
-        RectangleShape shape = new RectangleShape(20, 90, 0, -15);
+        RectangleShape shape = new RectangleShape(20, 60, 0, 15);
         shape.paint(painter);
         shape.move(100, 120);
         shape.paint(painter);
         shape.move(100, 120);
         shape.paint(painter);
-        assertEquals("(rectangle 20,90,25,35)(rectangle 20,75,25,35)"
-                + "(rectangle 20,60,25,35)", painter.toString());
+        assertEquals("(rectangle 20,60,25,35)(rectangle 20,75,25,35)"
+                + "(rectangle 20,85,25,35)", painter.toString());
     }
 
     /**
@@ -100,14 +100,14 @@ public class TestOvalShape {
      */
     @Test
     public void testShapeMoveWithBounceOffTopAndRight() {
-        OvalShape shape = new OvalShape(100, 20, 12, 15);
+        OvalShape shape = new OvalShape(100, 20, 12, -15);
         shape.paint(painter);
         shape.move(135, 10000);
         shape.paint(painter);
         shape.move(135, 10000);
         shape.paint(painter);
-        assertEquals("(oval 100,20,25,35)(oval 110,35,25,35)"
-                + "(oval 98,50,25,35)", painter.toString());
+        assertEquals("(oval 100,20,25,35)(oval 110,5,25,35)"
+                + "(oval 98,0,25,35)", painter.toString());
     }
 
     /**
@@ -116,14 +116,14 @@ public class TestOvalShape {
      */
     @Test
     public void testShapeMoveWithBounceOffTopAndLeft() {
-        OvalShape shape = new OvalShape(10, 20, -12, 15);
+        OvalShape shape = new OvalShape(10, 20, -12, -15);
         shape.paint(painter);
         shape.move(10000, 10000);
         shape.paint(painter);
         shape.move(10000, 10000);
         shape.paint(painter);
-        assertEquals("(oval 10,20,25,35)(oval 0,35,25,35)"
-                + "(oval 12,50,25,35)", painter.toString());
+        assertEquals("(oval 10,20,25,35)(oval 0,5,25,35)"
+                + "(oval 12,0,25,35)", painter.toString());
     }
 
     /**
@@ -132,14 +132,14 @@ public class TestOvalShape {
      */
     @Test
     public void testShapeMoveWithBounceOffBottomAndRight() {
-        OvalShape shape = new OvalShape(90, 90, 12, -15);
+        OvalShape shape = new OvalShape(90, 90, 12, 15);
         shape.paint(painter);
         shape.move(125, 135);
         shape.paint(painter);
         shape.move(125, 135);
         shape.paint(painter);
-        assertEquals("(oval 90,90,25,35)(oval 100,75,25,35)"
-                + "(oval 88,60,25,35)", painter.toString());
+        assertEquals("(oval 90,90,25,35)(oval 100,100,25,35)"
+                + "(oval 88,85,25,35)", painter.toString());
     }
 
     /**
@@ -148,13 +148,13 @@ public class TestOvalShape {
      */
     @Test
     public void testShapeMoveWithBounceOffBottomAndLeft() {
-        OvalShape shape = new OvalShape(90, 90, -12, -15);
+        OvalShape shape = new OvalShape(90, 90, -12, 15);
         shape.paint(painter);
         shape.move(125, 135);
         shape.paint(painter);
         shape.move(125, 135);
         shape.paint(painter);
-        assertEquals("(oval 90,90,25,35)(oval 78,75,25,35)"
-                + "(oval 66,60,25,35)", painter.toString());
+        assertEquals("(oval 90,90,25,35)(oval 78,100,25,35)"
+                + "(oval 66,85,25,35)", painter.toString());
     }
 }

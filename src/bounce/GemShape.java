@@ -1,6 +1,6 @@
 package bounce;
 
-public class GemShape extends Shape{
+public class GemShape extends Shape {
     /**
      * Default constructor that creates a GemShape instance whose instance
      * variables are set to default values.
@@ -39,9 +39,6 @@ public class GemShape extends Shape{
         super(x, y, deltaX, deltaY, width, height);
     }
 
-    /**
-     * Paints this OvalShape object using the supplied Painter object.
-     */
     @Override
     public void paint(Painter painter) {
         painter.drawGemShape(x, y, width, height);

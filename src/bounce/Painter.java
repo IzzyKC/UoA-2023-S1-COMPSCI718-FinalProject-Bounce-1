@@ -1,5 +1,7 @@
 package bounce;
 
+import java.awt.*;
+
 /**
  * Interface to represent a type that offers primitive drawing methods.
  *
@@ -23,5 +25,13 @@ public interface Painter {
      * oval. Parameters width and height specify its width and height.
      */
     void drawGemShape(int x, int y, int width, int height);
+
+    void fillRect(int x, int y, int width, int height);
+
+    Color getColor();
+
+    void setColor(Color color);
+
+    void drawDynamicRectangle(int x, int y, int width, int height,boolean isSolid);
 
 }

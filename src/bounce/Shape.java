@@ -1,5 +1,7 @@
 package bounce;
 
+import java.awt.*;
+
 /**
  * Abstract superclass to represent the general concept of a Shape. This class
  * defines state common to all special kinds of Shape instances and implements
@@ -21,6 +23,8 @@ public abstract class Shape {
     protected static final int DEFAULT_HEIGHT = 35;
 
     protected static final int DEFAULT_WIDTH = 25;
+
+    protected static final Color DEFAULT_COLOR = Color.BLACK;
     // ===
 
     // === Instance variables, accessible by subclasses.
@@ -35,6 +39,14 @@ public abstract class Shape {
     protected int width;
 
     protected int height;
+    protected boolean isCollision;
+
+    //shape bounces off the left or right wall
+    protected boolean isBounceVertical;
+
+    //shape bounces off the top or bottom wall
+    protected boolean isBounceHorizontal;
+
     // ===
 
     /**
@@ -60,8 +72,8 @@ public abstract class Shape {
     }
 
     /**
-     * Creates a Shape instance with specified x, y, deltaX, deltaY, width and
-     * height values.
+     * Creates a Shape instance with specified x, y, deltaX, deltaY, width,
+     * height and color values.
      */
     public Shape(int x, int y, int deltaX, int deltaY, int width, int height) {
         this.x = x;
@@ -81,23 +93,34 @@ public abstract class Shape {
      * @param height height of two-dimensional world.
      */
     public void move(int width, int height) {
+        isCollision = false;
+        isBounceVertical = false;
+        isBounceHorizontal = false;
         int nextX = x + deltaX;
         int nextY = y + deltaY;
 
         if (nextX <= 0) {
             nextX = 0;
             deltaX = -deltaX;
+            isCollision = true;
+            isBounceVertical = true;
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
+            isCollision = true;
+            isBounceVertical = true;
         }
 
         if (nextY <= 0) {
             nextY = 0;
             deltaY = -deltaY;
+            isCollision = true;
+            isBounceHorizontal = true;
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
+            isCollision = true;
+            isBounceHorizontal =true;
         }
 
         x = nextX;
