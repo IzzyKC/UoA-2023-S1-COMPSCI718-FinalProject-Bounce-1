@@ -1,6 +1,7 @@
 package bounce;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Interface to represent a type that offers primitive drawing methods.
@@ -33,5 +34,10 @@ public interface Painter {
     void setColor(Color color);
 
     void drawDynamicRectangle(int x, int y, int width, int height,boolean isSolid);
+    void drawBorderShapes(List<RectangleShape> borders);
+    int getWorldWidth();
+    void setWorldWidth(int width);
+    int getWorldHeight();
+    void setWorldHeight(int height);
 
 }

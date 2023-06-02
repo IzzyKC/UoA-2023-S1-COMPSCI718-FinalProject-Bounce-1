@@ -1,6 +1,7 @@
 package bounce;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Implementation of the Painter interface that does not actually do any
@@ -15,6 +16,9 @@ public class MockPainter implements Painter {
     private StringBuffer log = new StringBuffer();
 
     private Color color;
+
+    private int worldWidth;
+    private int worldHeight;
 
     /**
      * Returns the contents of this MockPainter's log.
@@ -82,4 +86,32 @@ public class MockPainter implements Painter {
             log.append("(draw rectangle " + x + "," + y + "," + width + "," + height + ")");
 
     }
+
+    @Override
+    public void drawBorderShapes(List<RectangleShape> borders) {
+
+    }
+
+    @Override
+    public int getWorldWidth() {
+        return this.worldWidth;
+    }
+
+    @Override
+    public void setWorldWidth(int width) {
+        this.worldWidth = width;
+
+    }
+
+    @Override
+    public int getWorldHeight() {
+        return this.worldHeight;
+    }
+
+    @Override
+    public void setWorldHeight(int height) {
+        this.worldHeight = height;
+
+    }
+
 }

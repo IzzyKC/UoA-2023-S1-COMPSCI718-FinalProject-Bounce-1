@@ -51,6 +51,7 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new DynamicRectangleShape(30,50,7,5));
         shapes.add(new DynamicRectangleShape(100,50,3,5,Color.BLUE));
         shapes.add(new DynamicRectangleShape(20,70,3,5,70,50,Color.RED));
+        shapes.add(new BorderShape(new OvalShape(75,100,4,8,25,45),5));
 
         // Start the animation.
         timer.start();
@@ -73,13 +74,20 @@ public class AnimationViewer extends JPanel implements ActionListener {
         // Create a GraphicsPainter that Shape objects will use for drawing.
         // The GraphicsPainter delegates painting to a basic Graphics object.
         Painter painter = new GraphicsPainter(g);
+        painter.setWorldWidth(width);
+        painter.setWorldHeight(height);
 
         // Progress the animation.
         for (Shape s : shapes) {
             s.paint(painter);
             if(s instanceof DynamicRectangleShape)
                 ((DynamicRectangleShape) s).moveAndCheckBounceoff(width,height);
-            else
+            else if(s instanceof BorderShape) {
+                BorderShape b = (BorderShape) s;
+                b.getInnerShape().move(width,height);
+                for(RectangleShape r : b.getBorders())
+                    r.move(width, height);
+            }else
                 s.move(width, height);
         }
     }

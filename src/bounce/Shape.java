@@ -185,4 +185,40 @@ public abstract class Shape {
     public String toString() {
         return getClass().getName();
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setDeltaX(int deltaX) {
+        this.deltaX = deltaX;
+    }
+
+    public void setDeltaY(int deltaY) {
+        this.deltaY = deltaY;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public boolean isCollision() {
+        return isCollision;
+    }
+
+    public boolean isBounceVertical() {
+        return isBounceVertical;
+    }
+
+    public boolean isBounceHorizontal() {
+        return isBounceHorizontal;
+    }
 }

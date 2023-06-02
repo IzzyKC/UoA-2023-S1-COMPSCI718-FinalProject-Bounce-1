@@ -1,6 +1,7 @@
 package bounce;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Implementation of the Painter interface that delegates drawing to a
@@ -11,6 +12,10 @@ import java.awt.*;
 public class GraphicsPainter implements Painter {
     // Delegate object.
     private Graphics g;
+
+    private int worldWidth;
+
+    private int worldHeight;
 
     /**
      * Creates a GraphicsPainter object and sets its Graphics delegate.
@@ -85,5 +90,33 @@ public class GraphicsPainter implements Painter {
             fillRect(x,y,width,height);
         else
             drawRect(x,y,width,height);
+    }
+
+    @Override
+    public void drawBorderShapes(List<RectangleShape> borders) {
+       if(borders == null || borders.size()==0) return;
+       for(RectangleShape r : borders)
+           drawRect(r.x(),r.y(),r.width(), r.height());
+    }
+
+    @Override
+    public int getWorldWidth() {
+        return this.worldWidth;
+    }
+
+    @Override
+    public void setWorldWidth(int width) {
+        this.worldWidth  = width;
+    }
+
+    @Override
+    public int getWorldHeight() {
+        return this.worldHeight;
+    }
+
+    @Override
+    public void setWorldHeight(int height) {
+        this.worldHeight = height;
+
     }
 }

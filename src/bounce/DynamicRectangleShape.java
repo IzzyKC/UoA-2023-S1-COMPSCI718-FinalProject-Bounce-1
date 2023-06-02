@@ -13,7 +13,7 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape() {
         super();
-        this.color =DEFAULT_COLOR;
+        this.color = DEFAULT_COLOR;
     }
 
     /**
@@ -21,14 +21,14 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape(Color color) {
         super();
-        this.color =color;
+        this.color = color;
     }
 
     /**
      * Creates a Shape object with a specified x and y position.
      */
     public DynamicRectangleShape(int x, int y) {
-        super(x,y);
+        super(x, y);
         this.color = DEFAULT_COLOR;
 
     }
@@ -37,7 +37,7 @@ public class DynamicRectangleShape extends Shape {
      * Creates a Shape object with a specified x ,y and color.
      */
     public DynamicRectangleShape(int x, int y, Color color) {
-        super(x,y);
+        super(x, y);
         this.color = color;
     }
 
@@ -51,7 +51,7 @@ public class DynamicRectangleShape extends Shape {
      * @param deltaY speed and direction for vertical axis.
      */
     public DynamicRectangleShape(int x, int y, int deltaX, int deltaY) {
-        super(x,y,deltaX,deltaY);
+        super(x, y, deltaX, deltaY);
         this.color = DEFAULT_COLOR;
     }
 
@@ -113,8 +113,14 @@ public class DynamicRectangleShape extends Shape {
      */
     @Override
     public void paint(Painter painter) {
+        Color currentColor = painter.getColor();
         painter.setColor(color);
         painter.drawDynamicRectangle(x, y, width, height, isSolid);
+        painter.setColor(currentColor);
+    }
+
+    public Color getColor() {
+        return color;
     }
 
     /**
@@ -132,8 +138,8 @@ public class DynamicRectangleShape extends Shape {
      */
     public void moveAndCheckBounceoff(int width, int height) {
         super.move(width, height);
-        if (isCollision) {
-            if (isBounceVertical)
+        if (isCollision()) {
+            if (isBounceVertical())
                 isSolid = true;
             else
                 isSolid = false;
