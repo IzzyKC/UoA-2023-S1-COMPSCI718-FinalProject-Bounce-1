@@ -157,12 +157,6 @@ public class TestDynamicRectangleShape {
     }
 
     /**
-     * In addition you should develop a further four test cases to check
-     * that following a bounce of two walls (top-right, top-left, bottom-right, bottom-left)
-     * a DynamicRectangleShape object’s appearance is consistent with its specification.
-     */
-
-    /**
      * Test to perform a bounce off top and right walls at same time
      * and changes its appearance to solid figure
      */

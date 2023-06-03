@@ -89,7 +89,9 @@ public class MockPainter implements Painter {
 
     @Override
     public void drawBorderShapes(List<Shape> borders) {
-
+        if(borders == null || borders.size()==0) return;
+        for(Shape s : borders)
+            s.paint(this);
     }
 
     @Override

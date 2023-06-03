@@ -96,7 +96,6 @@ public class GraphicsPainter implements Painter {
        if(borders == null || borders.size()==0) return;
        for(Shape s : borders)
            s.paint(this);
-           //drawRect(r.x(),r.y(),r.width(), r.height());
     }
 
     @Override
