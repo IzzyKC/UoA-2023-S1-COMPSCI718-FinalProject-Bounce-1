@@ -97,25 +97,8 @@ public class GraphicsPainter implements Painter {
        for(Shape s : borders)
            s.paint(this);
     }
-
     @Override
-    public int getWorldWidth() {
-        return this.worldWidth;
-    }
-
-    @Override
-    public void setWorldWidth(int width) {
-        this.worldWidth  = width;
-    }
-
-    @Override
-    public int getWorldHeight() {
-        return this.worldHeight;
-    }
-
-    @Override
-    public void setWorldHeight(int height) {
-        this.worldHeight = height;
+    public void drawCentredText() {
 
     }
 }

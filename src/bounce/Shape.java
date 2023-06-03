@@ -1,6 +1,7 @@
 package bounce;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Abstract superclass to represent the general concept of a Shape. This class
@@ -216,4 +217,36 @@ public abstract class Shape {
     public BounceOff getBounceOff() {
         return bounceOff;
     }
+
+    /**
+     * Returns the NestingShape that contains the Shape that method parent
+     * is called on. If the callee object is not a child with in a
+     * NestingShape instance this method returns null .
+     */
+    public NestingShape parent(){
+
+        return null;
+    }
+
+    /**
+     * Returns an ordered list of Shape objects. The first item with in
+     * the list is the root NestingShape of the containment hierarchy .
+     * The last item with in the list is the callee object (hence this
+     * method always returns a list with at least one item ) . Any
+     * intermediate items are NestingShapes that connect the root
+     * NestingShape to the callee Shape. E.g., given :
+     *
+     * NestingShape root = new NestingShape();
+     * NestingShape intermediate = new NestingShape();
+     * Shape oval = new OvalShape() ;
+     * root.add(intermediate) ;
+     * intermediate.add (oval);
+
+     * a call to oval.path() yields : [root ,intermediate ,oval]
+     */
+    public List<Shape> path(){
+
+        return null;
+    }
+
 }

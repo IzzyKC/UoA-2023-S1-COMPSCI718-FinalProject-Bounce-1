@@ -64,6 +64,7 @@ public class MockPainter implements Painter {
 
     @Override
     public void fillRect(int x, int y, int width, int height) {
+        log.append("(filled rectangle " + x + "," + y + "," + width + "," + height + ")");
 
     }
 
@@ -81,9 +82,9 @@ public class MockPainter implements Painter {
     @Override
     public void drawDynamicRectangle(int x, int y, int width, int height, boolean isSolid) {
         if (isSolid)
-            log.append("(fill rectangle " + x + "," + y + "," + width + "," + height + ")");
+            fillRect(x,y,width,height);
         else
-            log.append("(draw rectangle " + x + "," + y + "," + width + "," + height + ")");
+            drawRect(x,y,width,height);
 
     }
 
@@ -93,26 +94,8 @@ public class MockPainter implements Painter {
         for(Shape s : borders)
             s.paint(this);
     }
-
     @Override
-    public int getWorldWidth() {
-        return this.worldWidth;
-    }
-
-    @Override
-    public void setWorldWidth(int width) {
-        this.worldWidth = width;
-
-    }
-
-    @Override
-    public int getWorldHeight() {
-        return this.worldHeight;
-    }
-
-    @Override
-    public void setWorldHeight(int height) {
-        this.worldHeight = height;
+    public void drawCentredText() {
 
     }
 

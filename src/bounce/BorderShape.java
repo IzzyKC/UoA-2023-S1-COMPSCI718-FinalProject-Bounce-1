@@ -45,15 +45,24 @@ public class BorderShape extends Shape {
     }
 
     private void generateBorders(Shape innerShape) {
-
+        int borderX = innerShape.x() ;
+        int borderY = innerShape.y();
+        int borderWidth = innerShape.width();
+        int borderHeight = innerShape.height() ;
         for (int i = 1; i <= paddingNum; i++) {
-            int borderX = innerShape.x() - 2 * i;
-            int borderY = innerShape.y() - 2 * i;
-            int borderWidth = innerShape.width() + (2 + 2) * i;
-            int borderHeight = innerShape.height() + (2 + 2) * i;
+            borderX = borderX - 2;
+            borderY = borderY - 2;
+            borderWidth = borderWidth + (2 + 2);
+            borderHeight = borderHeight + (2 + 2);
             this.bounceOff.getShapes().add(new RectangleShape(borderX, borderY,
                     innerShape.deltaX(), innerShape.deltaY(), borderWidth, borderHeight));
         }
+        this.x = borderX;
+        this.y = borderY;
+        this.deltaX = innerShape.deltaX();
+        this.deltaY = innerShape.deltaY();
+        this.width = borderWidth;
+        this.height = borderHeight;
 
     }
 

@@ -75,8 +75,6 @@ public class AnimationViewer extends JPanel implements ActionListener {
         // Create a GraphicsPainter that Shape objects will use for drawing.
         // The GraphicsPainter delegates painting to a basic Graphics object.
         Painter painter = new GraphicsPainter(g);
-        painter.setWorldWidth(width);
-        painter.setWorldHeight(height);
 
         // Progress the animation.
         for (Shape s : shapes) {
