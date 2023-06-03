@@ -39,14 +39,8 @@ public abstract class Shape {
     protected int width;
 
     protected int height;
-    protected boolean isCollision;
 
-    //shape bounces off the left or right wall
-    protected boolean isBounceVertical;
-
-    //shape bounces off the top or bottom wall
-    protected boolean isBounceHorizontal;
-
+    protected BounceOff bounceOff;
     // ===
 
     /**
@@ -82,6 +76,7 @@ public abstract class Shape {
         this.deltaY = deltaY;
         this.width = width;
         this.height = height;
+        this.bounceOff = new BounceOff();
     }
 
     /**
@@ -93,35 +88,43 @@ public abstract class Shape {
      * @param height height of two-dimensional world.
      */
     public void move(int width, int height) {
-        isCollision = false;
-        isBounceVertical = false;
-        isBounceHorizontal = false;
+        boolean isBounceOff = false;
+        boolean isBounceVertical = false;
+        boolean isBounceHorizontal = false;
         int nextX = x + deltaX;
         int nextY = y + deltaY;
 
         if (nextX <= 0) {
             nextX = 0;
             deltaX = -deltaX;
-            isCollision = true;
+            isBounceOff = true;
             isBounceVertical = true;
+            bounceOff.changeObserverDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
-            isCollision = true;
+            isBounceOff = true;
             isBounceVertical = true;
+            bounceOff.changeObserverDeltaX(x - nextX);
         }
 
         if (nextY <= 0) {
             nextY = 0;
             deltaY = -deltaY;
-            isCollision = true;
+            isBounceOff = true;
             isBounceHorizontal = true;
+            bounceOff.changeObserverDeltaY(nextY - y);
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
-            isCollision = true;
-            isBounceHorizontal =true;
+            isBounceOff = true;
+            isBounceHorizontal = true;
+            bounceOff.changeObserverDeltaY(y - nextY);
         }
+
+        if (isBounceOff)
+            bounceOff.setSloid(isBounceVertical, isBounceHorizontal);
+        bounceOff.moveObservers(width, height,deltaX,deltaY);
 
         x = nextX;
         y = nextY;
@@ -210,15 +213,7 @@ public abstract class Shape {
         this.height = height;
     }
 
-    public boolean isCollision() {
-        return isCollision;
-    }
-
-    public boolean isBounceVertical() {
-        return isBounceVertical;
-    }
-
-    public boolean isBounceHorizontal() {
-        return isBounceHorizontal;
+    public BounceOff getBounceOff() {
+        return bounceOff;
     }
 }

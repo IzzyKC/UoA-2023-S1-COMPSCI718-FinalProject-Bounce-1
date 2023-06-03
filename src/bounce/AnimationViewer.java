@@ -51,7 +51,8 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new DynamicRectangleShape(30,50,7,5));
         shapes.add(new DynamicRectangleShape(100,50,3,5,Color.BLUE));
         shapes.add(new DynamicRectangleShape(20,70,3,5,70,50,Color.RED));
-        shapes.add(new BorderShape(new OvalShape(75,100,4,8,25,45),5));
+        shapes.add(new BorderShape(new OvalShape(75,100,2,3,25,45),5));
+        shapes.add(new BorderShape(new GemShape(120,100,4,3,35,45),10));
 
         // Start the animation.
         timer.start();
@@ -80,15 +81,7 @@ public class AnimationViewer extends JPanel implements ActionListener {
         // Progress the animation.
         for (Shape s : shapes) {
             s.paint(painter);
-            if(s instanceof DynamicRectangleShape)
-                ((DynamicRectangleShape) s).moveAndCheckBounceoff(width,height);
-            else if(s instanceof BorderShape) {
-                BorderShape b = (BorderShape) s;
-                b.getInnerShape().move(width,height);
-                for(RectangleShape r : b.getBorders())
-                    r.move(width, height);
-            }else
-                s.move(width, height);
+            s.move(width, height);
         }
     }
 

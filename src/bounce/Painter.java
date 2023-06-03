@@ -34,7 +34,7 @@ public interface Painter {
     void setColor(Color color);
 
     void drawDynamicRectangle(int x, int y, int width, int height,boolean isSolid);
-    void drawBorderShapes(List<RectangleShape> borders);
+    void drawBorderShapes(List<Shape> borders);
     int getWorldWidth();
     void setWorldWidth(int width);
     int getWorldHeight();

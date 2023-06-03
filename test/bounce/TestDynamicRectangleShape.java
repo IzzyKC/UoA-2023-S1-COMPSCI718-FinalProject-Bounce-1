@@ -29,9 +29,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(10, 20, -12, -15,
                 10, 20, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 90);
+        shape.move(130, 90);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 90);
+        shape.move(130, 90);
         shape.paint(painter);
         assertEquals("(draw rectangle 10,20,10,20)(fill rectangle 0,5,10,20)(draw rectangle 12,0,10,20)",
                 painter.toString());
@@ -46,9 +46,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(125, 20, 12, -15,
                 10, 20, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 125,20,10,20)(fill rectangle 120,5,10,20)(draw rectangle 108,0,10,20)",
                 painter.toString());
@@ -63,9 +63,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(10, 15, -12, 15,
                 10, 20, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 10,15,10,20)(fill rectangle 0,30,10,20)(draw rectangle 12,40,10,20)",
                 painter.toString());
@@ -80,9 +80,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(125, 20, 12, 15,
                 10, 20, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 125,20,10,20)(fill rectangle 120,35,10,20)(draw rectangle 108,40,10,20)",
                 painter.toString());
@@ -97,9 +97,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(20, 20, -12, 15,
                 10, 20, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(120, 60);
+        shape.move(120, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(120, 60);
+        shape.move(120, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 20,20,10,20)(draw rectangle 8,35,10,20)(fill rectangle 0,40,10,20)",
                 painter.toString());
@@ -114,9 +114,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(100, 40, 12, 10,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 100,40,10,30)(draw rectangle 112,30,10,30)(fill rectangle 120,20,10,30)",
                 painter.toString());
@@ -131,9 +131,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(20, 20, -12, -20,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 20,20,10,30)(draw rectangle 8,0,10,30)(fill rectangle 0,20,10,30)",
                 painter.toString());
@@ -148,9 +148,9 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(100, 20, 12, -20,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(130, 60);
+        shape.move(130, 60);
         shape.paint(painter);
         assertEquals("(draw rectangle 100,20,10,30)(draw rectangle 112,0,10,30)(fill rectangle 120,20,10,30)",
                 painter.toString());
@@ -171,7 +171,7 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(100, 20, 12, -20,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(120, 40);
+        shape.move(120, 40);
         shape.paint(painter);
         assertEquals("(draw rectangle 100,20,10,30)(fill rectangle 110,0,10,30)",
                 painter.toString());
@@ -186,7 +186,7 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(10, 20, -12, -20,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(120, 40);
+        shape.move(120, 40);
         shape.paint(painter);
         assertEquals("(draw rectangle 10,20,10,30)(fill rectangle 0,0,10,30)",
                 painter.toString());
@@ -201,7 +201,7 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(10, 20, -12, 20,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(120, 40);
+        shape.move(120, 40);
         shape.paint(painter);
         assertEquals("(draw rectangle 10,20,10,30)(fill rectangle 0,10,10,30)",
                 painter.toString());
@@ -216,7 +216,7 @@ public class TestDynamicRectangleShape {
         DynamicRectangleShape shape = new DynamicRectangleShape(115, 20, 12, 20,
                 10, 30, Color.RED);
         shape.paint(painter);
-        shape.moveAndCheckBounceoff(120, 40);
+        shape.move(120, 40);
         shape.paint(painter);
         assertEquals("(draw rectangle 115,20,10,30)(fill rectangle 110,10,10,30)",
                 painter.toString());

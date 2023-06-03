@@ -85,7 +85,6 @@ public class GraphicsPainter implements Painter {
 
     @Override
     public void drawDynamicRectangle(int x, int y, int width, int height, boolean isSolid) {
-
         if(isSolid)
             fillRect(x,y,width,height);
         else
@@ -93,10 +92,11 @@ public class GraphicsPainter implements Painter {
     }
 
     @Override
-    public void drawBorderShapes(List<RectangleShape> borders) {
+    public void drawBorderShapes(List<Shape> borders) {
        if(borders == null || borders.size()==0) return;
-       for(RectangleShape r : borders)
-           drawRect(r.x(),r.y(),r.width(), r.height());
+       for(Shape s : borders)
+           s.paint(this);
+           //drawRect(r.x(),r.y(),r.width(), r.height());
     }
 
     @Override

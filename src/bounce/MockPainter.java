@@ -88,7 +88,7 @@ public class MockPainter implements Painter {
     }
 
     @Override
-    public void drawBorderShapes(List<RectangleShape> borders) {
+    public void drawBorderShapes(List<Shape> borders) {
 
     }
 

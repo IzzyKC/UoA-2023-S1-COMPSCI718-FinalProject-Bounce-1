@@ -13,7 +13,7 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape() {
         super();
-        this.color = DEFAULT_COLOR;
+        this.color =DEFAULT_COLOR;
     }
 
     /**
@@ -21,14 +21,14 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape(Color color) {
         super();
-        this.color = color;
+        this.color =color;
     }
 
     /**
      * Creates a Shape object with a specified x and y position.
      */
     public DynamicRectangleShape(int x, int y) {
-        super(x, y);
+        super(x,y);
         this.color = DEFAULT_COLOR;
 
     }
@@ -37,7 +37,7 @@ public class DynamicRectangleShape extends Shape {
      * Creates a Shape object with a specified x ,y and color.
      */
     public DynamicRectangleShape(int x, int y, Color color) {
-        super(x, y);
+        super(x,y);
         this.color = color;
     }
 
@@ -51,7 +51,7 @@ public class DynamicRectangleShape extends Shape {
      * @param deltaY speed and direction for vertical axis.
      */
     public DynamicRectangleShape(int x, int y, int deltaX, int deltaY) {
-        super(x, y, deltaX, deltaY);
+        super(x,y,deltaX,deltaY);
         this.color = DEFAULT_COLOR;
     }
 
@@ -115,7 +115,7 @@ public class DynamicRectangleShape extends Shape {
     public void paint(Painter painter) {
         Color currentColor = painter.getColor();
         painter.setColor(color);
-        painter.drawDynamicRectangle(x, y, width, height, isSolid);
+        painter.drawDynamicRectangle(x, y, width, height, this.getBounceOff().isSloid());
         painter.setColor(currentColor);
     }
 
@@ -123,26 +123,4 @@ public class DynamicRectangleShape extends Shape {
         return color;
     }
 
-    /**
-     * Moves this Shape object within the specified bounds. On hitting a
-     * boundary the Shape instance bounces off and back into the two-
-     * dimensional world.
-     * After it bounces off the left or right wall it paints itself as a solid figure, in the color
-     * pecified at construction time.
-     * After it bounces off the top or bottom wall it switches its
-     * appearance to that of a RectangleShape, i.e. rendering itself with an outline.
-     * If it bounces off both walls, the vertical (left or right) wall determines its appearance.
-     *
-     * @param width  width of two-dimensional world.
-     * @param height height of two-dimensional world.
-     */
-    public void moveAndCheckBounceoff(int width, int height) {
-        super.move(width, height);
-        if (isCollision()) {
-            if (isBounceVertical())
-                isSolid = true;
-            else
-                isSolid = false;
-        }
-    }
 }
