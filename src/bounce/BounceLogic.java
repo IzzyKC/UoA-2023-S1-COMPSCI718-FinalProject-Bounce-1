@@ -10,6 +10,9 @@ public class BounceLogic {
     //observers of BorderShape
     private List<Shape> borderShapeItems = new ArrayList<>();
 
+    //observers of NestingShape(children)
+    private List<Shape> subNestingShapes = new ArrayList<>();
+
     /**
      * returns the boolean value of filled style
      * @return the boolean value of filled style
@@ -74,6 +77,13 @@ public class BounceLogic {
             s.setDeltaX(deltaX);
             s.setDeltaY(deltaY);
         }
+    }
+
+    /**
+     * Returns the children list of a NestingShape
+     */
+    public List<Shape> getSubNestingShapes() {
+        return subNestingShapes;
     }
 
     /**
