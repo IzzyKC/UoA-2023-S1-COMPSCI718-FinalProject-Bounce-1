@@ -42,7 +42,7 @@ public abstract class Shape {
 
     protected int height;
 
-    protected BounceLogic bounceOff;
+    protected BounceLogic bounceLogic;
 
     //parent of NestingShape child
     protected NestingShape parent;
@@ -81,7 +81,7 @@ public abstract class Shape {
         this.deltaY = deltaY;
         this.width = width;
         this.height = height;
-        this.bounceOff = new BounceLogic();
+        this.bounceLogic = new BounceLogic();
     }
 
     /**
@@ -104,13 +104,13 @@ public abstract class Shape {
             deltaX = -deltaX;
             isBounceOff = true;
             isBounceOffVertical = true;
-            bounceOff.changeBorderShapeItemDeltaX(nextX - x);
+            bounceLogic.changeBorderShapeItemDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
             isBounceOff = true;
             isBounceOffVertical = true;
-            bounceOff.changeBorderShapeItemDeltaX(x - nextX);
+            bounceLogic.changeBorderShapeItemDeltaX(x - nextX);
         }
 
         if (nextY <= 0) {
@@ -118,17 +118,18 @@ public abstract class Shape {
             deltaY = -deltaY;
             isBounceOff = true;
             isBounceOffHorizontal = true;
-            bounceOff.changeBorderShapeItemDeltaY(nextY - y);
+            bounceLogic.changeBorderShapeItemDeltaY(nextY - y);
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
             isBounceOff = true;
             isBounceOffHorizontal = true;
-            bounceOff.changeBorderShapeItemDeltaY(y - nextY);
+            bounceLogic.changeBorderShapeItemDeltaY(y - nextY);
         }
 
-        bounceOff.setDynamicRectSolid(isBounceOff, isBounceOffVertical, isBounceOffHorizontal);
-        bounceOff.moveBorderShapeItems(width, height,deltaX,deltaY);
+        bounceLogic.setDynamicRectSolid(isBounceOff, isBounceOffVertical, isBounceOffHorizontal);
+        bounceLogic.moveBorderShapeItems(width, height,deltaX,deltaY);
+        bounceLogic.moveSubNestingShapes();
 
         x = nextX;
         y = nextY;
@@ -215,10 +216,6 @@ public abstract class Shape {
 
     public void setHeight(int height) {
         this.height = height;
-    }
-
-    public BounceLogic getBounceOff() {
-        return bounceOff;
     }
 
     /**

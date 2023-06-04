@@ -45,8 +45,12 @@ public class NestingShape extends Shape {
      */
     @Override
     public void paint(Painter painter) {
-        System.out.println(this.path().size());
-
+        painter.drawRect(x, y, width, height);
+        for(Shape s : this.nestingShapes){
+            painter.translate(s.parent.x(), s.parent.y());
+            s.paint(painter);
+            painter.translate(-s.parent.x(), -s.parent.y());
+        }
     }
 
     /**
@@ -69,6 +73,7 @@ public class NestingShape extends Shape {
             throw new IllegalArgumentException("This shape cannot fit within the NestingShape instance!");
         shape.parent = this;
         nestingShapes.add(shape);
+        this.bounceLogic.getSubNestingShapes().add(shape);
     }
 
     /**
@@ -110,7 +115,6 @@ public class NestingShape extends Shape {
      */
 
     public int shapeCount() {
-
         return nestingShapes.size();
     }
 
@@ -123,9 +127,7 @@ public class NestingShape extends Shape {
      * @param shape whose index position within the NestingShape is requested.
      */
     public int indexOf(Shape shape) {
-
         return nestingShapes.indexOf(shape);
-
     }
 
     /**

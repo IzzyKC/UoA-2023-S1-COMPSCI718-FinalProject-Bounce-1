@@ -70,7 +70,7 @@ public class GraphicsPainter implements Painter {
 
     @Override
     public void fillRect(int x, int y, int width, int height) {
-        g.fillRect(x,y,width,height);
+        g.fillRect(x, y, width, height);
     }
 
     @Override
@@ -85,18 +85,19 @@ public class GraphicsPainter implements Painter {
 
     @Override
     public void drawDynamicRectangle(int x, int y, int width, int height, boolean isSolid) {
-        if(isSolid)
-            fillRect(x,y,width,height);
+        if (isSolid)
+            fillRect(x, y, width, height);
         else
-            drawRect(x,y,width,height);
+            drawRect(x, y, width, height);
     }
 
     @Override
     public void drawBorderShapes(List<Shape> borders) {
-       if(borders == null || borders.size()==0) return;
-       for(Shape s : borders)
-           s.paint(this);
+        if (borders == null || borders.size() == 0) return;
+        for (Shape s : borders)
+            s.paint(this);
     }
+
     @Override
     public void drawCentredText(int x, int y, String text) {
         FontMetrics fm = g.getFontMetrics();
@@ -106,12 +107,17 @@ public class GraphicsPainter implements Painter {
         int xPos = x - fm.stringWidth(text) / 2;
         int yPos = y;
 
-        if( ascent > descent )
+        if (ascent > descent)
             yPos += (ascent - descent) / 2;
         else if (ascent < descent)
             yPos -= (descent - ascent) / 2;
 
         g.drawString(text, xPos, yPos);
 
+    }
+
+    @Override
+    public void translate(int x, int y) {
+        g.translate(x, y);
     }
 }

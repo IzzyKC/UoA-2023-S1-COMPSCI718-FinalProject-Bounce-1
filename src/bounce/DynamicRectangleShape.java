@@ -115,7 +115,7 @@ public class DynamicRectangleShape extends Shape {
     public void paint(Painter painter) {
         Color currentColor = painter.getColor();
         painter.setColor(color);
-        painter.drawDynamicRectangle(x, y, width, height, this.getBounceOff().isSolid());
+        painter.drawDynamicRectangle(x, y, width, height, this.bounceLogic.isSolid());
         painter.setColor(currentColor);
     }
 

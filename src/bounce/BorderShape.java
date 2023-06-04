@@ -35,10 +35,10 @@ public class BorderShape extends Shape {
 
     @Override
     public void paint(Painter painter) {
-        this.bounceOff.getBorderShapeItemsShapes().clear();
-        this.bounceOff.getBorderShapeItemsShapes().add(innerShape);
+        this.bounceLogic.getBorderShapeItemsShapes().clear();
+        this.bounceLogic.getBorderShapeItemsShapes().add(innerShape);
         generateBorders(innerShape);
-        painter.drawBorderShapes(this.bounceOff.getBorderShapeItemsShapes());
+        painter.drawBorderShapes(this.bounceLogic.getBorderShapeItemsShapes());
     }
 
     private void generateBorders(Shape innerShape) {
@@ -46,14 +46,16 @@ public class BorderShape extends Shape {
         int borderY = innerShape.y();
         int borderWidth = innerShape.width();
         int borderHeight = innerShape.height();
+
         for (int i = 1; i <= paddingNum; i++) {
             borderX = borderX - 2;
             borderY = borderY - 2;
             borderWidth = borderWidth + (2 + 2);
             borderHeight = borderHeight + (2 + 2);
-            this.bounceOff.getBorderShapeItemsShapes().add(new RectangleShape(borderX, borderY,
+            this.bounceLogic.getBorderShapeItemsShapes().add(new RectangleShape(borderX, borderY,
                     innerShape.deltaX(), innerShape.deltaY(), borderWidth, borderHeight));
         }
+
         this.x = borderX;
         this.y = borderY;
         this.deltaX = innerShape.deltaX();

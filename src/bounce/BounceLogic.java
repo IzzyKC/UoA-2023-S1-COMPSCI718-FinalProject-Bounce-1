@@ -15,6 +15,7 @@ public class BounceLogic {
 
     /**
      * returns the boolean value of filled style
+     *
      * @return the boolean value of filled style
      */
     public boolean isSolid() {
@@ -27,17 +28,18 @@ public class BounceLogic {
      * color specified at construction time. After it bounces off the top or bottom wall it switches its
      * appearance to that of a RectangleShape, i.e. rendering itself with an outline. If it bounces off both
      * walls, the vertical (left or right) wall determines its appearance.
-     * @param isBounceOffVertical bounce off left or right walls
+     *
+     * @param isBounceOffVertical   bounce off left or right walls
      * @param isBounceOffHorizontal bounces off top or bottom walls
-     *                           //
+     *                              //
      */
     public void setDynamicRectSolid(boolean isBounceOff, boolean isBounceOffVertical, boolean isBounceOffHorizontal) {
-        if(!isBounceOff) return;
-        if(isBounceOffVertical && isBounceOffHorizontal)
+        if (!isBounceOff) return;
+        if (isBounceOffVertical && isBounceOffHorizontal)
             this.isSolid = true;
-        else if(isBounceOffVertical)
+        else if (isBounceOffVertical)
             this.isSolid = true;
-        else if(isBounceOffHorizontal)
+        else if (isBounceOffHorizontal)
             this.isSolid = false;
     }
 
@@ -51,18 +53,18 @@ public class BounceLogic {
     /**
      * Changes the value of deltaY when a BorderShape object pass beyond its world width
      */
-    public void changeBorderShapeItemDeltaX(int newDeltaX){
-        if(borderShapeItems == null || borderShapeItems.size() == 0) return;
-        for(Shape s : borderShapeItems)
+    public void changeBorderShapeItemDeltaX(int newDeltaX) {
+        if (borderShapeItems == null || borderShapeItems.size() == 0) return;
+        for (Shape s : borderShapeItems)
             s.setDeltaX(newDeltaX);
     }
 
     /**
      * Changes the value of deltaY when a BorderShape object pass beyond its height
      */
-    public void changeBorderShapeItemDeltaY(int newDeltaY){
-        if(borderShapeItems == null || borderShapeItems.size() == 0) return;
-        for(Shape s : borderShapeItems)
+    public void changeBorderShapeItemDeltaY(int newDeltaY) {
+        if (borderShapeItems == null || borderShapeItems.size() == 0) return;
+        for (Shape s : borderShapeItems)
             s.setDeltaY(newDeltaY);
     }
 
@@ -70,9 +72,9 @@ public class BounceLogic {
      * Moves a BorderShape object(including its innerShape and borders)
      * by arguments deltaX and deltaY within specified width and height.
      */
-    public void moveBorderShapeItems(int width, int height, int deltaX, int deltaY){
-        if(borderShapeItems == null || borderShapeItems.size() == 0) return;
-        for(Shape s : borderShapeItems) {
+    public void moveBorderShapeItems(int width, int height, int deltaX, int deltaY) {
+        if (borderShapeItems == null || borderShapeItems.size() == 0) return;
+        for (Shape s : borderShapeItems) {
             s.move(width, height);
             s.setDeltaX(deltaX);
             s.setDeltaY(deltaY);
@@ -90,4 +92,10 @@ public class BounceLogic {
      * Moves a NestingShape object(including its children) within the bounds
      * speccified by arguments width and height.
      */
+    public void moveSubNestingShapes() {
+        if(subNestingShapes == null || subNestingShapes.size() ==0) return;
+        for(Shape s : subNestingShapes) {
+            s.move(s.parent.width(), s.parent.height());
+        }
+    }
 }

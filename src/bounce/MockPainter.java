@@ -70,13 +70,14 @@ public class MockPainter implements Painter {
 
     @Override
     public Color getColor() {
+        log.append("(current color " + color.toString() + ")");
         return this.color;
     }
 
     @Override
     public void setColor(Color color) {
+        log.append("(change to color " + color.toString() + ")");
         this.color = color;
-
     }
 
     @Override
@@ -98,6 +99,11 @@ public class MockPainter implements Painter {
     @Override
     public void drawCentredText(int x, int y, String text) {
 
+    }
+
+    @Override
+    public void translate(int x, int y) {
+        log.append("(translate " + x + "," + y + ")");
     }
 
 }
