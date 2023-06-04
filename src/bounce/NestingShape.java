@@ -44,6 +44,11 @@ public class NestingShape extends Shape {
      * speccified by arguments width and height.
      */
     public void move() {
+        super.move(width(), height());
+        for(Shape s : this.nestingShapes){
+            s.move(s.parent.width(),s.parent().height());
+            System.out.println(s.x()+"," + s.y()+","+s.width()+","+s.height());
+        }
 
     }
 
@@ -53,6 +58,7 @@ public class NestingShape extends Shape {
      */
     @Override
     public void paint(Painter painter) {
+        System.out.println(this.path().size());
 
     }
 

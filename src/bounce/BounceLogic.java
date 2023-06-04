@@ -3,11 +3,12 @@ package bounce;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BounceOff {
+public class BounceLogic {
+    //filled style of dynamicRectangleShape
     private boolean isSolid;
 
     //observers
-    private List<Shape> shapes = new ArrayList<>();
+    private List<Shape> borderShapeItems = new ArrayList<>();
 
     public boolean isSolid() {
         return this.isSolid;
@@ -23,7 +24,7 @@ public class BounceOff {
      *                           //
      */
 
-    public void setSolid(boolean isBounceOff, boolean isBounceOffVertical, boolean isBounceOffHorizontal) {
+    public void setDynamicRectSolid(boolean isBounceOff, boolean isBounceOffVertical, boolean isBounceOffHorizontal) {
         if(!isBounceOff) return;
         if(isBounceOffVertical && isBounceOffHorizontal)
             this.isSolid = true;
@@ -33,28 +34,24 @@ public class BounceOff {
             this.isSolid = false;
     }
 
-    public List<Shape> getShapes() {
-        return shapes;
+    public List<Shape> getBorderShapeItemsShapes() {
+        return borderShapeItems;
     }
 
-    public void setShapes(List<Shape> shapes) {
-        this.shapes = shapes;
-    }
-
-    public void changeObserverDeltaX(int newDeltaX){
-        if(shapes == null || shapes.size() == 0) return;
-        for(Shape s : shapes)
+    public void changeBorderShapeItemDeltaX(int newDeltaX){
+        if(borderShapeItems == null || borderShapeItems.size() == 0) return;
+        for(Shape s : borderShapeItems)
             s.setDeltaX(newDeltaX);
     }
-    public void changeObserverDeltaY(int newDeltaY){
-        if(shapes == null || shapes.size() == 0) return;
-        for(Shape s : shapes)
+    public void changeBorderShapeItemDeltaY(int newDeltaY){
+        if(borderShapeItems == null || borderShapeItems.size() == 0) return;
+        for(Shape s : borderShapeItems)
             s.setDeltaY(newDeltaY);
     }
 
-    public void moveObservers(int width, int height, int deltaX, int deltaY){
-        if(shapes == null || shapes.size() == 0) return;
-        for(Shape s : shapes) {
+    public void moveBorderShapeItems(int width, int height, int deltaX, int deltaY){
+        if(borderShapeItems == null || borderShapeItems.size() == 0) return;
+        for(Shape s : borderShapeItems) {
             s.move(width, height);
             s.setDeltaX(deltaX);
             s.setDeltaY(deltaY);

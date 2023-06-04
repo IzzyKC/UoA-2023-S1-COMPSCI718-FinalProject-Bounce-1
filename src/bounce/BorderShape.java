@@ -1,4 +1,5 @@
 package bounce;
+
 import java.util.List;
 
 public class BorderShape extends Shape {
@@ -34,23 +35,23 @@ public class BorderShape extends Shape {
 
     @Override
     public void paint(Painter painter) {
-        this.bounceOff.getShapes().clear();
-        this.bounceOff.getShapes().add(innerShape);
+        this.bounceOff.getBorderShapeItemsShapes().clear();
+        this.bounceOff.getBorderShapeItemsShapes().add(innerShape);
         generateBorders(innerShape);
-        painter.drawBorderShapes(this.bounceOff.getShapes());
+        painter.drawBorderShapes(this.bounceOff.getBorderShapeItemsShapes());
     }
 
     private void generateBorders(Shape innerShape) {
-        int borderX = innerShape.x() ;
+        int borderX = innerShape.x();
         int borderY = innerShape.y();
         int borderWidth = innerShape.width();
-        int borderHeight = innerShape.height() ;
+        int borderHeight = innerShape.height();
         for (int i = 1; i <= paddingNum; i++) {
             borderX = borderX - 2;
             borderY = borderY - 2;
             borderWidth = borderWidth + (2 + 2);
             borderHeight = borderHeight + (2 + 2);
-            this.bounceOff.getShapes().add(new RectangleShape(borderX, borderY,
+            this.bounceOff.getBorderShapeItemsShapes().add(new RectangleShape(borderX, borderY,
                     innerShape.deltaX(), innerShape.deltaY(), borderWidth, borderHeight));
         }
         this.x = borderX;

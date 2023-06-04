@@ -2,7 +2,6 @@ package bounce;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -43,7 +42,7 @@ public abstract class Shape {
 
     protected int height;
 
-    protected BounceOff bounceOff;
+    protected BounceLogic bounceOff;
 
     //parent of NestingShape child
     protected NestingShape parent;
@@ -82,7 +81,7 @@ public abstract class Shape {
         this.deltaY = deltaY;
         this.width = width;
         this.height = height;
-        this.bounceOff = new BounceOff();
+        this.bounceOff = new BounceLogic();
     }
 
     /**
@@ -105,13 +104,13 @@ public abstract class Shape {
             deltaX = -deltaX;
             isBounceOff = true;
             isBounceOffVertical = true;
-            bounceOff.changeObserverDeltaX(nextX - x);
+            bounceOff.changeBorderShapeItemDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
             isBounceOff = true;
             isBounceOffVertical = true;
-            bounceOff.changeObserverDeltaX(x - nextX);
+            bounceOff.changeBorderShapeItemDeltaX(x - nextX);
         }
 
         if (nextY <= 0) {
@@ -119,17 +118,17 @@ public abstract class Shape {
             deltaY = -deltaY;
             isBounceOff = true;
             isBounceOffHorizontal = true;
-            bounceOff.changeObserverDeltaY(nextY - y);
+            bounceOff.changeBorderShapeItemDeltaY(nextY - y);
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
             isBounceOff = true;
             isBounceOffHorizontal = true;
-            bounceOff.changeObserverDeltaY(y - nextY);
+            bounceOff.changeBorderShapeItemDeltaY(y - nextY);
         }
 
-        bounceOff.setSolid(isBounceOff, isBounceOffVertical, isBounceOffHorizontal);
-        bounceOff.moveObservers(width, height,deltaX,deltaY);
+        bounceOff.setDynamicRectSolid(isBounceOff, isBounceOffVertical, isBounceOffHorizontal);
+        bounceOff.moveBorderShapeItems(width, height,deltaX,deltaY);
 
         x = nextX;
         y = nextY;
@@ -218,7 +217,7 @@ public abstract class Shape {
         this.height = height;
     }
 
-    public BounceOff getBounceOff() {
+    public BounceLogic getBounceOff() {
         return bounceOff;
     }
 

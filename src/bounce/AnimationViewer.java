@@ -45,14 +45,14 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new RectangleShape(10, 10, 5, 7));
         shapes.add(new OvalShape());
         shapes.add(new OvalShape(30, 30, 10, 20));
-        shapes.add(new OvalShape(20, 70, 5, 5,20,70));
-        shapes.add(new GemShape(20, 70,3,6));
-        shapes.add(new GemShape(20, 70, 5, 5,70,50));
-        shapes.add(new DynamicRectangleShape(30,50,7,5));
-        shapes.add(new DynamicRectangleShape(100,50,3,5,Color.BLUE));
-        shapes.add(new DynamicRectangleShape(20,70,3,5,70,50,Color.RED));
-        shapes.add(new BorderShape(new OvalShape(75,100,2,3,25,45),5));
-        shapes.add(new BorderShape(new GemShape(120,100,4,3,35,45),10));
+        shapes.add(new OvalShape(20, 70, 5, 5, 20, 70));
+        shapes.add(new GemShape(20, 70, 3, 6));
+        shapes.add(new GemShape(20, 70, 5, 5, 70, 50));
+        shapes.add(new DynamicRectangleShape(30, 50, 7, 5));
+        shapes.add(new DynamicRectangleShape(100, 50, 3, 5, Color.BLUE));
+        shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 70, 50, Color.RED));
+        shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 25, 45), 5));
+        shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 35, 45), 10));
 
         // Start the animation.
         timer.start();

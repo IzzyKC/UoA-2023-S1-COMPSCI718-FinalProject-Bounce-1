@@ -82,18 +82,19 @@ public class MockPainter implements Painter {
     @Override
     public void drawDynamicRectangle(int x, int y, int width, int height, boolean isSolid) {
         if (isSolid)
-            fillRect(x,y,width,height);
+            fillRect(x, y, width, height);
         else
-            drawRect(x,y,width,height);
+            drawRect(x, y, width, height);
 
     }
 
     @Override
     public void drawBorderShapes(List<Shape> borders) {
-        if(borders == null || borders.size()==0) return;
-        for(Shape s : borders)
+        if (borders == null || borders.size() == 0) return;
+        for (Shape s : borders)
             s.paint(this);
     }
+
     @Override
     public void drawCentredText(int x, int y, String text) {
 
