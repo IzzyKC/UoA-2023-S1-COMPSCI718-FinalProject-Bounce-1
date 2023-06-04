@@ -44,14 +44,16 @@ public class NestingShape extends Shape {
      * The NestingShape object's children are then painted.
      * adjust the coordinate system by specifying a new origin (the NestingShape’s top left corner)
      * that corresponds toa point in the original coordinate system.
+     * if the NestingShape is a leaf node, need to translate to the original coordinate system
+     * by its x and y position.
      */
     @Override
     public void paint(Painter painter) {
         painter.drawRect(x, y, width, height);
         painter.translate(x, y);
-        for(Shape s : this.nestingShapes){
+        for (Shape s : this.nestingShapes) {
             s.paint(painter);
-            if(s instanceof NestingShape && ((NestingShape) s).shapeCount() == 0) {
+            if (s instanceof NestingShape && ((NestingShape) s).shapeCount() == 0) {
                 painter.translate(-s.x(), -s.y());
                 continue;
             }
