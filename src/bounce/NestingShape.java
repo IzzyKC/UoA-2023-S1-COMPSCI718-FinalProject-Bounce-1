@@ -47,9 +47,11 @@ public class NestingShape extends Shape {
     public void paint(Painter painter) {
         painter.drawRect(x, y, width, height);
         for(Shape s : this.nestingShapes){
-            painter.translate(s.parent.x(), s.parent.y());
+            int translateX= s.parent.x()+s.parent.deltaX();
+            int translateY = s.parent.y()+s.parent.deltaY();
+            painter.translate(translateX, translateY);
             s.paint(painter);
-            painter.translate(-s.parent.x(), -s.parent.y());
+            painter.translate(-translateX, -translateY);
         }
     }
 
