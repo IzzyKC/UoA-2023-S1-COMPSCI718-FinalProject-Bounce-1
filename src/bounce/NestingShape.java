@@ -40,19 +40,6 @@ public class NestingShape extends Shape {
     }
 
     /**
-     * Moves a NestingShape object(including its children) within the bounds
-     * speccified by arguments width and height.
-     */
-    public void move() {
-        super.move(width(), height());
-        for(Shape s : this.nestingShapes){
-            s.move(s.parent.width(),s.parent().height());
-            System.out.println(s.x()+"," + s.y()+","+s.width()+","+s.height());
-        }
-
-    }
-
-    /**
      * paints a NestingShape object by drawing a rectangle around the edge of its bounding box.
      * The NestingShape object's children are then painted.
      */
