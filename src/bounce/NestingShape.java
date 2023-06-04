@@ -42,16 +42,21 @@ public class NestingShape extends Shape {
     /**
      * paints a NestingShape object by drawing a rectangle around the edge of its bounding box.
      * The NestingShape object's children are then painted.
+     * adjust the coordinate system by specifying a new origin (the NestingShape’s top left corner)
+     * that corresponds toa point in the original coordinate system.
      */
     @Override
     public void paint(Painter painter) {
         painter.drawRect(x, y, width, height);
+        painter.translate(x, y);
         for(Shape s : this.nestingShapes){
-            int translateX= s.parent.x()+s.parent.deltaX();
-            int translateY = s.parent.y()+s.parent.deltaY();
-            painter.translate(translateX, translateY);
             s.paint(painter);
-            painter.translate(-translateX, -translateY);
+            if(s instanceof NestingShape && ((NestingShape) s).shapeCount() == 0) {
+                painter.translate(-s.x(), -s.y());
+                continue;
+            }
+            painter.translate(-s.parent.x(), -s.parent.y());
+
         }
     }
 
