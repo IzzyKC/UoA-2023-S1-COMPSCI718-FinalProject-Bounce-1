@@ -35,6 +35,6 @@ public interface Painter {
 
     void drawDynamicRectangle(int x, int y, int width, int height,boolean isSolid);
     void drawBorderShapes(List<Shape> borders);
-    void drawCentredText();
+    void drawCentredText(int x, int y, String text);
 
 }

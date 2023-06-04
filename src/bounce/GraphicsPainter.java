@@ -98,7 +98,20 @@ public class GraphicsPainter implements Painter {
            s.paint(this);
     }
     @Override
-    public void drawCentredText() {
+    public void drawCentredText(int x, int y, String text) {
+        FontMetrics fm = g.getFontMetrics();
+        int ascent = fm.getAscent();
+        int descent = fm.getDescent();
+
+        int xPos = x - fm.stringWidth(text) / 2;
+        int yPos = y;
+
+        if( ascent > descent )
+            yPos += (ascent - descent) / 2;
+        else if (ascent < descent)
+            yPos -= (descent - ascent) / 2;
+
+        g.drawString(text, xPos, yPos);
 
     }
 }

@@ -1,10 +1,17 @@
 package bounce;
 
-public class NestingShape extends Shape{
+import java.util.ArrayList;
+import java.util.List;
+
+public class NestingShape extends Shape {
+
+    //children of this NestingShape instance
+    protected List<Shape> nestingShapes = new ArrayList<>();
+
     /**
      * creates a NestingShape Object with default values for state.
      */
-    public NestingShape(){
+    public NestingShape() {
         super();
     }
 
@@ -12,15 +19,16 @@ public class NestingShape extends Shape{
      * creates a NestingShape object with specified location values,
      * default values for other state items.
      */
-    public NestingShape(int x, int y){
-        super(x,y);
+    public NestingShape(int x, int y) {
+        super(x, y);
     }
+
     /**
      * creates a NestingShape with specified values for location,velocity and direction.
      * Non-specified state items take on default values.
      */
     public NestingShape(int x, int y, int deltaX, int deltaY) {
-        super(x,y,deltaX,deltaY);
+        super(x, y, deltaX, deltaY);
     }
 
     /**
@@ -35,7 +43,7 @@ public class NestingShape extends Shape{
      * Moves a NestingShape object(including its children) within the bounds
      * speccified by arguments width and height.
      */
-    public void move(){
+    public void move() {
 
     }
 
@@ -49,42 +57,57 @@ public class NestingShape extends Shape{
     }
 
     /**
-    * Attempts to add a Shape to a NestingShape object. If successful, a
-    * two-way link is established between the NestingShape and the newly
-    * added Shape. Note that this method has package visibility-for reasons
-    * that will become apparent in Bounce I I I .
-    * @param shape the shape to be added.
-    * @throws IllegalArgumentException if an attempt is made to add a Shape
-    * to a NestingShape instance where the Shape argument is already a child
-     * wwithin a NestingShape instance. An IllegalArgumentException is also
-    * thrown when an attempt is made to add a Shape that will not fit within
-    * the bounds of the proposed NestingShape object .
-    */
+     * Attempts to add a Shape to a NestingShape object. If successful, a
+     * two-way link is established between the NestingShape and the newly
+     * added Shape. Note that this method has package visibility-for reasons
+     * that will become apparent in Bounce III .
+     *
+     * @param shape the shape to be added.
+     * @throws IllegalArgumentException if an attempt is made to add a Shape
+     *                                  to a NestingShape instance where the Shape argument is already a child
+     *                                  within a NestingShape instance. An IllegalArgumentException is also
+     *                                  thrown when an attempt is made to add a Shape that will not fit within
+     *                                  the bounds of the proposed NestingShape object .
+     */
     public void add(Shape shape) throws IllegalArgumentException {
-
+        if (shape.parent != null)
+            throw new IllegalArgumentException("This shape already exists within another NestingShape instance!");
+        if ((shape.x() + shape.width() > this.width()) || (shape.y() + shape.height() > this.height))
+            throw new IllegalArgumentException("This shape cannot fit within the NestingShape instance!");
+        shape.parent = this;
+        nestingShapes.add(shape);
     }
+
     /**
      * Removes a particular Shape from a NestingShape instance. Once removed,
      * the two-way link between the NestingShape and its former child is destroyed.
      * This method has no effect if the Shape specified to remove is not a child of
      * the NestingShape. Note that this method has package visibility - for reason that will
      * become apparent in Bounce III .
+     *
      * @param shape the shape to be removed .
      */
-    public void remove (Shape shape){
-
+    public void remove(Shape shape) {
+        if (shape == null) return;
+        if (this.nestingShapes.contains(shape)) {
+            shape.parent = null;
+            this.nestingShapes.remove(shape);
+        }
     }
 
     /**
      * Returns the Shape at a specified position within a Nesting Shape. If the positon specified is
      * less than zero or greater than the number of children stored in the NestingShape less than one
      * this method throws an IndexOutBounds Exception.
+     *
      * @param index the specified index position
      */
 
-    public Shape shapeAt (int index) throws IndexOutOfBoundsException{
+    public Shape shapeAt(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index > nestingShapes.size() - 1)
+            throw new IndexOutOfBoundsException("The given index in invalid");
 
-        return null;
+        return nestingShapes.get(index);
     }
 
     /**
@@ -93,32 +116,35 @@ public class NestingShape extends Shape{
      * children at the top level within the callee NestingShape object.
      */
 
-    public int shapeCount(){
+    public int shapeCount() {
 
-        return 0;
+        return nestingShapes.size();
     }
 
     /**
-     * Returns the index of a specified child with in a NestingShape object.
+     * Returns the index of a specified child within a NestingShape object.
      * If the Shape specified is not actually a child of the NestingShape
-     * this method returns =1; otherwise the value returned is in the range
-     * 0 . . shapeCoun t ( ) = 1 .
-     * @param shape whose indexposition with in the NestingShape is requested.
+     * this method returns -1; otherwise the value returned is in the range
+     * 0 . . shapeCount( )-1 .
+     *
+     * @param shape whose index position within the NestingShape is requested.
      */
-    public int indexOf(Shape shape){
+    public int indexOf(Shape shape) {
 
-        return 0;
+        return nestingShapes.indexOf(shape);
+
     }
 
     /**
      * Returns true if the Shape argument is a child of the NestingShape
      * object on which this method is called , false otherwise.
      */
-    public boolean contains(Shape shape){
-
-        return false;
+    public boolean contains(Shape shape) {
+        if (this.nestingShapes == null || this.nestingShapes.size() == 0)
+            return false;
+        if (this.nestingShapes.contains(shape))
+            return true;
+        else
+            return false;
     }
-
-
-
 }

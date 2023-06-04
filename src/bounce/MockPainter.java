@@ -95,7 +95,7 @@ public class MockPainter implements Painter {
             s.paint(this);
     }
     @Override
-    public void drawCentredText() {
+    public void drawCentredText(int x, int y, String text) {
 
     }
 

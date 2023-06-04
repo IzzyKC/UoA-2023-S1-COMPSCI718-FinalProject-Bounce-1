@@ -1,6 +1,8 @@
 package bounce;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -42,6 +44,9 @@ public abstract class Shape {
     protected int height;
 
     protected BounceOff bounceOff;
+
+    //parent of NestingShape child
+    protected NestingShape parent;
     // ===
 
     /**
@@ -90,8 +95,8 @@ public abstract class Shape {
      */
     public void move(int width, int height) {
         boolean isBounceOff = false;
-        boolean isBounceVertical = false;
-        boolean isBounceHorizontal = false;
+        boolean isBounceOffVertical = false;
+        boolean isBounceOffHorizontal = false;
         int nextX = x + deltaX;
         int nextY = y + deltaY;
 
@@ -99,13 +104,13 @@ public abstract class Shape {
             nextX = 0;
             deltaX = -deltaX;
             isBounceOff = true;
-            isBounceVertical = true;
+            isBounceOffVertical = true;
             bounceOff.changeObserverDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
             isBounceOff = true;
-            isBounceVertical = true;
+            isBounceOffVertical = true;
             bounceOff.changeObserverDeltaX(x - nextX);
         }
 
@@ -113,18 +118,17 @@ public abstract class Shape {
             nextY = 0;
             deltaY = -deltaY;
             isBounceOff = true;
-            isBounceHorizontal = true;
+            isBounceOffHorizontal = true;
             bounceOff.changeObserverDeltaY(nextY - y);
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
             isBounceOff = true;
-            isBounceHorizontal = true;
+            isBounceOffHorizontal = true;
             bounceOff.changeObserverDeltaY(y - nextY);
         }
 
-        if (isBounceOff)
-            bounceOff.setSloid(isBounceVertical, isBounceHorizontal);
+        bounceOff.setSolid(isBounceOff, isBounceOffVertical, isBounceOffHorizontal);
         bounceOff.moveObservers(width, height,deltaX,deltaY);
 
         x = nextX;
@@ -225,7 +229,7 @@ public abstract class Shape {
      */
     public NestingShape parent(){
 
-        return null;
+        return this.parent != null ? this.parent : null;
     }
 
     /**
@@ -245,8 +249,9 @@ public abstract class Shape {
      * a call to oval.path() yields : [root ,intermediate ,oval]
      */
     public List<Shape> path(){
-
-        return null;
+        List<Shape> path = (parent == null) ? new ArrayList<>() : parent.path();
+        path.add(this);
+        return path;
     }
 
 }

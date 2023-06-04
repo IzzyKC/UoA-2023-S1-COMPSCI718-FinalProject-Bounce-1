@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BounceOff {
-    private boolean isSloid;
+    private boolean isSolid;
 
     //observers
     private List<Shape> shapes = new ArrayList<>();
 
-    public boolean isSloid() {
-        return isSloid;
+    public boolean isSolid() {
+        return this.isSolid;
     }
 
     /**
@@ -19,14 +19,18 @@ public class BounceOff {
      * appearance to that of a RectangleShape, i.e. rendering itself with an outline. If it bounces off both
      * walls, the vertical (left or right) wall determines its appearance.
      * @param isBounceOffVertical bounce off left or right walls
-     * @param isBounceHorizontal bounces off top or bottom walls
+     * @param isBounceOffHorizontal bounces off top or bottom walls
+     *                           //
      */
-    public void setSloid(boolean isBounceOffVertical, boolean isBounceHorizontal) {
-        if(isBounceOffVertical)
-            this.isSloid = true;
-        else if(isBounceHorizontal)
-            this.isSloid = false;
-        else this.isSloid = isBounceHorizontal && isBounceOffVertical;
+
+    public void setSolid(boolean isBounceOff, boolean isBounceOffVertical, boolean isBounceOffHorizontal) {
+        if(!isBounceOff) return;
+        if(isBounceOffVertical && isBounceOffHorizontal)
+            this.isSolid = true;
+        else if(isBounceOffVertical)
+            this.isSolid = true;
+        else if(isBounceOffHorizontal)
+            this.isSolid = false;
     }
 
     public List<Shape> getShapes() {

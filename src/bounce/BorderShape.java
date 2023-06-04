@@ -1,6 +1,4 @@
 package bounce;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class BorderShape extends Shape {
@@ -9,8 +7,6 @@ public class BorderShape extends Shape {
     protected int paddingNum;
 
     protected Shape innerShape;
-
-    //protected List<Shape> borders;
 
     public BorderShape(Shape innerShape) {
         this.innerShape = innerShape;
