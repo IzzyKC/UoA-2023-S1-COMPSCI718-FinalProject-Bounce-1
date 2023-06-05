@@ -54,6 +54,23 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 25, 45), 5));
         shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 35, 45), 10));
 
+        //add NestingShape
+        NestingShape topLevelNest = new NestingShape(2, 2, 2, 2, 100, 200);
+        NestingShape midLevelNest = new NestingShape(1, 1, 2, 2, 50, 100);
+        NestingShape bottomLevelNest = new NestingShape(5, 5, 2, 2, 40, 30);
+        Shape simpleShape = new DynamicRectangleShape(3, 3, 1, 1, 5, 5,Color.RED);
+        Shape borderShape = new BorderShape(new GemShape(2,2,1,1,5,5),5);
+        try {
+            bottomLevelNest.add(borderShape);
+            midLevelNest.add(bottomLevelNest);
+            topLevelNest.add(simpleShape);
+            topLevelNest.add(midLevelNest);
+            shapes.add(topLevelNest);
+        }catch(IllegalArgumentException e){
+            System.out.println("Error: "+ e.getMessage());
+        }
+
+
         // Start the animation.
         timer.start();
     }
