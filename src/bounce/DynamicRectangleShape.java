@@ -93,8 +93,9 @@ public class DynamicRectangleShape extends Shape {
         super(x, y, deltaX, deltaY, width, height);
         this.color = DEFAULT_COLOR;
     }
-    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height,String text) {
-        super(x, y, deltaX, deltaY, width, height,text);
+
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height, String text) {
+        super(x, y, deltaX, deltaY, width, height, text);
         this.color = DEFAULT_COLOR;
     }
 

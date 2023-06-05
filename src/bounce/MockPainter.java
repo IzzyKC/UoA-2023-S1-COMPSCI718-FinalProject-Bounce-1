@@ -64,7 +64,7 @@ public class MockPainter implements Painter {
 
     @Override
     public void fillRect(int x, int y, int width, int height, Color color) {
-        log.append("(filled rectangle " + x + "," + y + "," + width + "," + height +")");
+        log.append("(filled rectangle " + x + "," + y + "," + width + "," + height + ")");
 
     }
 

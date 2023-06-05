@@ -172,6 +172,9 @@ public class NestingShape extends Shape {
         }
     }
 
+    /**
+     * Paints a NestingShape object (including Children).
+     */
     public void paintText(Painter painter) {
         super.paintText(painter);
         painter.translate(x, y);
