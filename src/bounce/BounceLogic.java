@@ -4,44 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BounceLogic {
-    //filled style of dynamicRectangleShape
-    private boolean isSolid;
-
     //observers of BorderShape
     private List<Shape> borderShapeItems = new ArrayList<>();
 
     //observers of NestingShape(children)
     private List<Shape> subNestingShapes = new ArrayList<>();
-
-    /**
-     * returns the boolean value of filled style
-     *
-     * @return the boolean value of filled style
-     */
-    public boolean isSolid() {
-        return this.isSolid;
-    }
-
-    /**
-     * set the filled style of a DynamicRectangleShape
-     * After it bounces off the left or right wall it paints itself as a solid figure, in the
-     * color specified at construction time. After it bounces off the top or bottom wall it switches its
-     * appearance to that of a RectangleShape, i.e. rendering itself with an outline. If it bounces off both
-     * walls, the vertical (left or right) wall determines its appearance.
-     *
-     * @param isBounceOffVertical   bounce off left or right walls
-     * @param isBounceOffHorizontal bounces off top or bottom walls
-     *                              //
-     */
-    public void setDynamicRectSolid(boolean isBounceOff, boolean isBounceOffVertical, boolean isBounceOffHorizontal) {
-        if (!isBounceOff) return;
-        if (isBounceOffVertical && isBounceOffHorizontal)
-            this.isSolid = true;
-        else if (isBounceOffVertical)
-            this.isSolid = true;
-        else if (isBounceOffHorizontal)
-            this.isSolid = false;
-    }
 
     /**
      * Returns the list of a BorderShape items
@@ -90,11 +57,15 @@ public class BounceLogic {
 
     /**
      * Moves a NestingShape object(including its children) within the bounds
-     * speccified by arguments width and height.
+     * specified by arguments width and height.
      */
     public void moveSubNestingShapes() {
         if(subNestingShapes.size() == 0 ) return;
         for(Shape s : subNestingShapes) {
+            if( !(s instanceof NestingShape)){
+                s.move(s.parent.width(), s.parent.height());
+                continue;
+            }
             s.move(s.parent.width(), s.parent.height());
         }
     }

@@ -27,15 +27,16 @@ public interface Painter {
      */
     void drawGemShape(int x, int y, int width, int height);
 
-    void fillRect(int x, int y, int width, int height);
+    void fillRect(int x, int y, int width, int height, Color color);
 
     Color getColor();
 
     void setColor(Color color);
 
-    void drawDynamicRectangle(int x, int y, int width, int height,boolean isSolid);
     void drawBorderShapes(List<Shape> borders);
+
     void drawCentredText(int x, int y, String text);
+
     void translate(int x, int y);
 
 }

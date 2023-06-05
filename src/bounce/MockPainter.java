@@ -63,30 +63,21 @@ public class MockPainter implements Painter {
     }
 
     @Override
-    public void fillRect(int x, int y, int width, int height) {
-        log.append("(filled rectangle " + x + "," + y + "," + width + "," + height + ")");
+    public void fillRect(int x, int y, int width, int height, Color color) {
+        log.append("(filled rectangle " + x + "," + y + "," + width + "," + height +")");
 
     }
 
     @Override
     public Color getColor() {
-        log.append("(current color " + color.toString() + ")");
+        //log.append("(current color " + color.toString() + ")");
         return this.color;
     }
 
     @Override
     public void setColor(Color color) {
-        log.append("(change to color " + color.toString() + ")");
+        //log.append("(change to color " + color.toString() + ")");
         this.color = color;
-    }
-
-    @Override
-    public void drawDynamicRectangle(int x, int y, int width, int height, boolean isSolid) {
-        if (isSolid)
-            fillRect(x, y, width, height);
-        else
-            drawRect(x, y, width, height);
-
     }
 
     @Override

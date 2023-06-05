@@ -44,8 +44,7 @@ public class NestingShape extends Shape {
      * The NestingShape object's children are then painted.
      * adjust the coordinate system by specifying a new origin (the NestingShape’s top left corner)
      * that corresponds toa point in the original coordinate system.
-     * if the NestingShape is a leaf node, need to translate to the original coordinate system
-     * by its x and y position.
+     *
      */
     @Override
     public void paint(Painter painter) {
@@ -53,13 +52,8 @@ public class NestingShape extends Shape {
         painter.translate(x, y);
         for (Shape s : this.nestingShapes) {
             s.paint(painter);
-            if (s instanceof NestingShape && ((NestingShape) s).shapeCount() == 0) {
-                painter.translate(-s.x(), -s.y());
-                continue;
-            }
-            painter.translate(-s.parent.x(), -s.parent.y());
-
         }
+        painter.translate(-x, -y);
     }
 
     /**
@@ -151,5 +145,30 @@ public class NestingShape extends Shape {
         else
             return false;
     }
+
+    /**
+     * Moves a NestingShape object (including Children) within bounds
+     * specified by arguments width and height.
+     */
+    public void move(int width, int height) {
+        super.move(width,height);
+        for(Shape s : nestingShapes){
+            s.move(width,height);
+        }
+    }
+
+    public void drawCentredText(Painter painter) {
+        for(Shape s : nestingShapes) {
+            System.out.println(s.toString());
+            System.out.println(s.x()+","+s.y()+","+s.width()+","+s.height());
+            System.out.println(s.text);
+            if(s instanceof NestingShape && ((NestingShape) s).nestingShapes.size()==0)
+                continue;
+            //s.drawCentredText(painter);
+            painter.drawCentredText(s.x()+s.width()/2,s.y()+height()/2,s.text);
+        }
+    }
+
+
 
 }

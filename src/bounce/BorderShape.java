@@ -65,4 +65,8 @@ public class BorderShape extends Shape {
 
     }
 
+    public void paintText(Painter painter) {
+        innerShape.paintText(painter);
+    }
+
 }

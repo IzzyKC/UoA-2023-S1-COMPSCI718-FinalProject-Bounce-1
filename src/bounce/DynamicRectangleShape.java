@@ -118,11 +118,12 @@ public class DynamicRectangleShape extends Shape {
     @Override
     public void paint(Painter painter) {
         Color currentColor = painter.getColor();
-        if(this.bounceLogic.isSolid())
-            painter.setColor(color);
-        painter.drawDynamicRectangle(x, y, width, height, this.bounceLogic.isSolid());
-
-        painter.setColor(currentColor);
+        if (isBounceOffVertical) {
+            painter.fillRect(x, y, width, height, color);
+        } else {
+            painter.drawRect(x, y, width, height);
+        }
+        painter.setColor(DEFAULT_COLOR);
     }
 
     public Color getColor() {

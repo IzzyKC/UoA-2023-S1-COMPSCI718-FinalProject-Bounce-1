@@ -42,6 +42,7 @@ public abstract class Shape {
     protected int width;
 
     protected int height;
+    protected boolean isBounceOffVertical;
 
     protected BounceLogic bounceLogic;
 
@@ -90,9 +91,10 @@ public abstract class Shape {
      * Creates a Shape instance with specified x, y, deltaX, deltaY, width,
      * height and color values.
      */
-    public Shape(int x, int y, int deltaX, int deltaY,int width, int height) {
+    public Shape(int x, int y, int deltaX, int deltaY, int width, int height) {
         this(x, y, deltaX, deltaY, width, height, DEFAULT_Text);
     }
+
     public Shape(int x, int y, int deltaX, int deltaY, int width, int height, String text) {
         this.x = x;
         this.y = y;
@@ -106,50 +108,43 @@ public abstract class Shape {
 
     /**
      * Moves this Shape object within the specified bounds. On hitting a
-     * boundary the Shape instance bounces off and back into the two-
-     * dimensional world.
+     * boundary the Shape instance bounces off and back into the two-dimensional world.
+     *
+     *The priority of bounce off vetical walls is always higher than horizontal walls.
+     * Thus check bounce off vertical walls later.
      *
      * @param width  width of two-dimensional world.
      * @param height height of two-dimensional world.
      */
     public void move(int width, int height) {
-        boolean isBounceOff = false;
-        boolean isBounceOffVertical = false;
-        boolean isBounceOffHorizontal = false;
         int nextX = x + deltaX;
         int nextY = y + deltaY;
+
+        if (nextY <= 0) {
+            nextY = 0;
+            deltaY = -deltaY;
+            isBounceOffVertical = false;
+            bounceLogic.changeBorderShapeItemDeltaY(nextY - y);
+        } else if (nextY + this.height >= height) {
+            nextY = height - this.height;
+            deltaY = -deltaY;
+            isBounceOffVertical = false;
+            bounceLogic.changeBorderShapeItemDeltaY(y - nextY);
+        }
 
         if (nextX <= 0) {
             nextX = 0;
             deltaX = -deltaX;
-            isBounceOff = true;
             isBounceOffVertical = true;
             bounceLogic.changeBorderShapeItemDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
-            isBounceOff = true;
             isBounceOffVertical = true;
             bounceLogic.changeBorderShapeItemDeltaX(x - nextX);
         }
 
-        if (nextY <= 0) {
-            nextY = 0;
-            deltaY = -deltaY;
-            isBounceOff = true;
-            isBounceOffHorizontal = true;
-            bounceLogic.changeBorderShapeItemDeltaY(nextY - y);
-        } else if (nextY + this.height >= height) {
-            nextY = height - this.height;
-            deltaY = -deltaY;
-            isBounceOff = true;
-            isBounceOffHorizontal = true;
-            bounceLogic.changeBorderShapeItemDeltaY(y - nextY);
-        }
-
-        bounceLogic.setDynamicRectSolid(isBounceOff, isBounceOffVertical, isBounceOffHorizontal);
         bounceLogic.moveBorderShapeItems(width, height, deltaX, deltaY);
-        bounceLogic.moveSubNestingShapes();
 
         x = nextX;
         y = nextY;
@@ -158,7 +153,7 @@ public abstract class Shape {
     /**
      * Method to be implemented by concrete subclasses to handle subclass
      * specific painting.
-     *
+     * This is a hook method of paint(Template method)
      * @param painter the Painter object used for drawing.
      */
     public abstract void paint(Painter painter);
@@ -270,10 +265,29 @@ public abstract class Shape {
         return path;
     }
 
-    public void drawCentredText(Painter painter) {
-        painter.drawCentredText(x+width/2, y+height/2,text);
-        if(this instanceof BorderShape)
-          ((BorderShape) this).innerShape.drawCentredText(painter);
+    public int centerX() {
+        return x + width / 2;
+    }
+
+    public int centerY() {
+        return y + height / 2;
+    }
+
+    /**
+     * Paints the centered text for this shape.
+     * This is a hook method of paint(Template Method)
+     */
+    public void paintText(Painter painter) {
+        painter.drawCentredText( centerX() , centerY(), text);
+    }
+
+    /**
+     * This is a template method of painting shape and text.
+     */
+    public void draw(Painter painter){
+        paint(painter);
+        paintText(painter);
+
     }
 
 }

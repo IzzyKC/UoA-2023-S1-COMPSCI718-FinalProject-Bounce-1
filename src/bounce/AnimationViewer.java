@@ -38,36 +38,36 @@ public class AnimationViewer extends JPanel implements ActionListener {
      * starts the animation.
      */
     public AnimationViewer() {
-        shapes = new ArrayList<Shape>();
+        shapes = new ArrayList<>();
 
         // Populate the list of Shapes.
         shapes.add(new RectangleShape(0, 0, 2, 3));
         shapes.add(new RectangleShape(10, 10, 5, 7));
         shapes.add(new OvalShape());
         shapes.add(new OvalShape(30, 30, 10, 20));
-        shapes.add(new OvalShape(30, 30, 5, 3,"Oval"));
+        shapes.add(new OvalShape(30, 30, 5, 3, "Oval"));
         shapes.add(new OvalShape(20, 70, 5, 5, 20, 70));
         shapes.add(new GemShape(20, 70, 3, 6));
         shapes.add(new GemShape(20, 70, 5, 5, 70, 50));
-        shapes.add(new GemShape(20, 70, 5, 5, 70, 50,"Hexagon"));
-        shapes.add(new DynamicRectangleShape(30, 50, 7, 5,Color.YELLOW));
-        shapes.add(new DynamicRectangleShape(100, 50, 3, 5, Color.PINK));
-        shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 75, 50,"DynamicRect" ,Color.RED));
-        shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 80, 45,"InnerShape"), 5));
-        shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 35, 45), 10));
+        shapes.add(new GemShape(20, 70, 5, 5, 200, 200, "Hexagon"));
+        shapes.add(new DynamicRectangleShape(30, 50, 7, 5, 100, 50,"DR-YELLOW",Color.YELLOW));
+        shapes.add(new DynamicRectangleShape(100, 50, 3, 5, 75, 75,"DR-PINK", Color.PINK));
+        shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 75, 50, "DR-RED", Color.RED));
+        shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 80, 45, "InnerShape"), 5));
+        shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 35, 45), 5));
 
         //add NestingShape
-        NestingShape topLevelNest = new NestingShape(2, 2, 2, 2, 100, 200);
-        NestingShape midLevelNest = new NestingShape(1, 1, 2, 2, 50, 100);
-        NestingShape bottomLevelNest = new NestingShape(5, 5, 2, 2, 40, 30);
-        Shape simpleShape = new RectangleShape(3, 3, 1, 1, 5, 5);
         try {
+            NestingShape topLevelNest = new NestingShape(0, 0, 2, 2, 100, 100);
+            NestingShape midLevelNest = new NestingShape(0, 0, 2, 2, 50, 50);
+            NestingShape bottomLevelNest = new NestingShape(5, 5, 2, 2, 10, 10);
+            Shape simpleShape = new OvalShape(1, 1, 1, 1, 10, 10,"NestingOval");
             midLevelNest.add(bottomLevelNest);
             midLevelNest.add(simpleShape);
             topLevelNest.add(midLevelNest);
             shapes.add(topLevelNest);
-        }catch(IllegalArgumentException e){
-            System.out.println("Error: "+ e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
 
@@ -95,8 +95,7 @@ public class AnimationViewer extends JPanel implements ActionListener {
 
         // Progress the animation.
         for (Shape s : shapes) {
-            s.paint(painter);
-            s.drawCentredText(painter);
+            s.draw(painter);
             s.move(width, height);
         }
     }
