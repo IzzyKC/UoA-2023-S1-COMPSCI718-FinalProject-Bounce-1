@@ -50,10 +50,10 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new GemShape(20, 70, 3, 6));
         shapes.add(new GemShape(20, 70, 5, 5, 70, 50));
         shapes.add(new GemShape(20, 70, 5, 5, 70, 50,"Hexagon"));
-        shapes.add(new DynamicRectangleShape(30, 50, 7, 5));
-        shapes.add(new DynamicRectangleShape(100, 50, 3, 5, Color.BLUE));
-        shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 70, 50, Color.RED));
-        shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 25, 45), 5));
+        shapes.add(new DynamicRectangleShape(30, 50, 7, 5,Color.YELLOW));
+        shapes.add(new DynamicRectangleShape(100, 50, 3, 5, Color.PINK));
+        shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 75, 50,"DynamicRect" ,Color.RED));
+        shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 80, 45,"InnerShape"), 5));
         shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 35, 45), 10));
 
         //add NestingShape

@@ -272,6 +272,8 @@ public abstract class Shape {
 
     public void drawCentredText(Painter painter) {
         painter.drawCentredText(x+width/2, y+height/2,text);
+        if(this instanceof BorderShape)
+          ((BorderShape) this).innerShape.drawCentredText(painter);
     }
 
 }

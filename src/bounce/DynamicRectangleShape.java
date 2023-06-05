@@ -106,6 +106,10 @@ public class DynamicRectangleShape extends Shape {
         super(x, y, deltaX, deltaY, width, height);
         this.color = color;
     }
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height,String text, Color color) {
+        super(x, y, deltaX, deltaY, width, height,text);
+        this.color = color;
+    }
 
     /**
      * Paints this DynamicRectangleShape object using the supplied Painter object.
@@ -114,8 +118,10 @@ public class DynamicRectangleShape extends Shape {
     @Override
     public void paint(Painter painter) {
         Color currentColor = painter.getColor();
-        painter.setColor(color);
+        if(this.bounceLogic.isSolid())
+            painter.setColor(color);
         painter.drawDynamicRectangle(x, y, width, height, this.bounceLogic.isSolid());
+
         painter.setColor(currentColor);
     }
 

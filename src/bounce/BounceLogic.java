@@ -95,9 +95,7 @@ public class BounceLogic {
     public void moveSubNestingShapes() {
         if(subNestingShapes.size() == 0 ) return;
         for(Shape s : subNestingShapes) {
-
             s.move(s.parent.width(), s.parent.height());
-
         }
     }
 }
