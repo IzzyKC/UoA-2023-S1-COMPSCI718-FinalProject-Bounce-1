@@ -7,9 +7,6 @@ public class BounceLogic {
     //observers of BorderShape
     private List<Shape> borderShapeItems = new ArrayList<>();
 
-    //observers of NestingShape(children)
-    private List<Shape> subNestingShapes = new ArrayList<>();
-
     /**
      * Returns the list of a BorderShape items
      */
@@ -48,25 +45,4 @@ public class BounceLogic {
         }
     }
 
-    /**
-     * Returns the children list of a NestingShape
-     */
-    public List<Shape> getSubNestingShapes() {
-        return subNestingShapes;
-    }
-
-    /**
-     * Moves a NestingShape object(including its children) within the bounds
-     * specified by arguments width and height.
-     */
-    public void moveSubNestingShapes() {
-        if(subNestingShapes.size() == 0 ) return;
-        for(Shape s : subNestingShapes) {
-            if( !(s instanceof NestingShape)){
-                s.move(s.parent.width(), s.parent.height());
-                continue;
-            }
-            s.move(s.parent.width(), s.parent.height());
-        }
-    }
 }

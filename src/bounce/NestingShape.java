@@ -68,12 +68,8 @@ public class NestingShape extends Shape {
         painter.translate(x, y);
         for (Shape s : this.nestingShapes) {
             s.paint(painter);
-            if (s instanceof NestingShape && ((NestingShape) s).shapeCount() == 0) {
-                painter.translate(-s.x(), -s.y());
-                continue;
-            }
-            painter.translate(-s.parent.x(), -s.parent.y());
         }
+        painter.translate(-x, -y);
     }
 
     /**
@@ -96,7 +92,6 @@ public class NestingShape extends Shape {
             throw new IllegalArgumentException("This shape cannot fit within the NestingShape instance!");
         shape.parent = this;
         nestingShapes.add(shape);
-        this.bounceLogic.getSubNestingShapes().add(shape);
     }
 
     /**
