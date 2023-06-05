@@ -33,8 +33,6 @@ public interface Painter {
 
     void setColor(Color color);
 
-    void drawBorderShapes(List<Shape> borders);
-
     void drawCentredText(int x, int y, String text);
 
     void translate(int x, int y);

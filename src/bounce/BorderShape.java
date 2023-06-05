@@ -38,7 +38,9 @@ public class BorderShape extends Shape {
         this.bounceLogic.getBorderShapeItemsShapes().clear();
         this.bounceLogic.getBorderShapeItemsShapes().add(innerShape);
         generateBorders(innerShape);
-        painter.drawBorderShapes(this.bounceLogic.getBorderShapeItemsShapes());
+        for(Shape s: this.bounceLogic.getBorderShapeItemsShapes()){
+            s.draw(painter);
+        }
     }
 
     private void generateBorders(Shape innerShape) {

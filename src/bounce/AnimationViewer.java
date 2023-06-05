@@ -58,10 +58,11 @@ public class AnimationViewer extends JPanel implements ActionListener {
 
         //add NestingShape
         try {
-            NestingShape topLevelNest = new NestingShape(0, 0, 2, 2, 100, 100);
-            NestingShape midLevelNest = new NestingShape(0, 0, 2, 2, 50, 50);
-            NestingShape bottomLevelNest = new NestingShape(5, 5, 2, 2, 10, 10);
-            Shape simpleShape = new OvalShape(1, 1, 1, 1, 10, 10,"NestingOval");
+            NestingShape topLevelNest = new NestingShape(0, 0, 2, 2, 250, 250,"Top");
+            NestingShape midLevelNest = new NestingShape(0, 0, 1, 1, 150, 150,"Mid");
+            NestingShape bottomLevelNest = new NestingShape(2, 2, 2, 2, 50, 50,"Btm");
+            Shape simpleShape = new DynamicRectangleShape(1, 1, 3, 4, 10, 6,"M2",Color.RED);
+
             midLevelNest.add(bottomLevelNest);
             midLevelNest.add(simpleShape);
             topLevelNest.add(midLevelNest);

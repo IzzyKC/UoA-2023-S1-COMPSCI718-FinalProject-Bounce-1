@@ -85,13 +85,6 @@ public class GraphicsPainter implements Painter {
     }
 
     @Override
-    public void drawBorderShapes(List<Shape> borders) {
-        if (borders == null || borders.size() == 0) return;
-        for (Shape s : borders)
-            s.paint(this);
-    }
-
-    @Override
     public void drawCentredText(int x, int y, String text) {
         if(text == null) return;
         FontMetrics fm = g.getFontMetrics();

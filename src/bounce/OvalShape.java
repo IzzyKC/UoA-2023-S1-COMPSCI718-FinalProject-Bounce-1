@@ -1,6 +1,6 @@
 package bounce;
 
-public class OvalShape extends Shape{
+public class OvalShape extends Shape {
     /**
      * Default constructor that creates a OvalShape instance whose instance
      * variables are set to default values.
@@ -8,6 +8,23 @@ public class OvalShape extends Shape{
     public OvalShape() {
         super();
     }
+
+    public OvalShape(String text) {
+        super(text);
+    }
+
+    /**
+     * creates a OvalShape object with specified location values,
+     * default values for other state items.
+     */
+    public OvalShape(int x, int y) {
+        super(x, y);
+    }
+
+    public OvalShape(int x, int y, String text) {
+        super(x, y, text);
+    }
+
 
     /**
      * Creates a OvalShape instance with specified values for instance
@@ -42,9 +59,11 @@ public class OvalShape extends Shape{
     public OvalShape(int x, int y, int deltaX, int deltaY, int width, int height) {
         super(x, y, deltaX, deltaY, width, height);
     }
+
     public OvalShape(int x, int y, int deltaX, int deltaY, int width, int height, String text) {
-        super(x, y, deltaX, deltaY, width, height,text);
+        super(x, y, deltaX, deltaY, width, height, text);
     }
+
     /**
      * Paints this OvalShape object using the supplied Painter object.
      */

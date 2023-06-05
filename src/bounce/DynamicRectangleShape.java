@@ -4,7 +4,6 @@ import java.awt.*;
 
 public class DynamicRectangleShape extends Shape {
     protected Color color;
-    protected boolean isSolid;
 
 
     /**
@@ -13,6 +12,11 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape() {
         super();
+        this.color = DEFAULT_COLOR;
+    }
+
+    public DynamicRectangleShape(String text) {
+        super(text);
         this.color = DEFAULT_COLOR;
     }
 
@@ -33,6 +37,7 @@ public class DynamicRectangleShape extends Shape {
 
     }
 
+
     /**
      * Creates a Shape object with a specified x ,y and color.
      */
@@ -40,6 +45,7 @@ public class DynamicRectangleShape extends Shape {
         super(x, y);
         this.color = color;
     }
+
 
     /**
      * Creates a GemShape instance with specified values for instance
@@ -85,7 +91,11 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height) {
         super(x, y, deltaX, deltaY, width, height);
-        this.color = color;
+        this.color = DEFAULT_COLOR;
+    }
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height,String text) {
+        super(x, y, deltaX, deltaY, width, height,text);
+        this.color = DEFAULT_COLOR;
     }
 
     /**
@@ -106,8 +116,9 @@ public class DynamicRectangleShape extends Shape {
         super(x, y, deltaX, deltaY, width, height);
         this.color = color;
     }
-    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height,String text, Color color) {
-        super(x, y, deltaX, deltaY, width, height,text);
+
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, int width, int height, String text, Color color) {
+        super(x, y, deltaX, deltaY, width, height, text);
         this.color = color;
     }
 

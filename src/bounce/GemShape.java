@@ -9,6 +9,22 @@ public class GemShape extends Shape {
         super();
     }
 
+    public GemShape(String text) {
+        super(text);
+    }
+
+    /**
+     * creates a GemShape object with specified location values,
+     * default values for other state items.
+     */
+    public GemShape(int x, int y) {
+        super(x, y);
+    }
+
+    public GemShape(int x, int y, String text) {
+        super(x, y, text);
+    }
+
     /**
      * Creates a GemShape instance with specified values for instance
      * variables.
@@ -20,6 +36,10 @@ public class GemShape extends Shape {
      */
     public GemShape(int x, int y, int deltaX, int deltaY) {
         super(x, y, deltaX, deltaY);
+    }
+
+    public GemShape(int x, int y, int deltaX, int deltaY, String text) {
+        super(x, y, deltaX, deltaY, text);
     }
 
     /**
@@ -38,6 +58,7 @@ public class GemShape extends Shape {
     public GemShape(int x, int y, int deltaX, int deltaY, int width, int height) {
         super(x, y, deltaX, deltaY, width, height);
     }
+
     public GemShape(int x, int y, int deltaX, int deltaY, int width, int height, String text) {
         super(x, y, deltaX, deltaY, width, height, text);
     }

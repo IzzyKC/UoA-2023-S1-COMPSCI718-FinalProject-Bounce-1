@@ -15,12 +15,20 @@ public class NestingShape extends Shape {
         super();
     }
 
+    public NestingShape(String text) {
+        super(text);
+    }
+
     /**
      * creates a NestingShape object with specified location values,
      * default values for other state items.
      */
     public NestingShape(int x, int y) {
         super(x, y);
+    }
+
+    public NestingShape(int x, int y, String text) {
+        super(x, y, text);
     }
 
     /**
@@ -31,6 +39,10 @@ public class NestingShape extends Shape {
         super(x, y, deltaX, deltaY);
     }
 
+    public NestingShape(int x, int y, int deltaX, int deltaY, String text) {
+        super(x, y, deltaX, deltaY, text);
+    }
+
     /**
      * creates a NestingShape with specified values for location,velocity and direction,
      * width and height.
@@ -39,12 +51,16 @@ public class NestingShape extends Shape {
         super(x, y, deltaX, deltaY, width, height);
     }
 
+    public NestingShape(int x, int y, int deltaX, int deltaY, int width,
+                        int height, String text) {
+        super(x, y, deltaX, deltaY, width, height, text);
+    }
+
     /**
      * paints a NestingShape object by drawing a rectangle around the edge of its bounding box.
      * The NestingShape object's children are then painted.
      * adjust the coordinate system by specifying a new origin (the NestingShape’s top left corner)
      * that corresponds toa point in the original coordinate system.
-     *
      */
     @Override
     public void paint(Painter painter) {
@@ -52,8 +68,12 @@ public class NestingShape extends Shape {
         painter.translate(x, y);
         for (Shape s : this.nestingShapes) {
             s.paint(painter);
+            if (s instanceof NestingShape && ((NestingShape) s).shapeCount() == 0) {
+                painter.translate(-s.x(), -s.y());
+                continue;
+            }
+            painter.translate(-s.parent.x(), -s.parent.y());
         }
-        painter.translate(-x, -y);
     }
 
     /**
@@ -151,24 +171,18 @@ public class NestingShape extends Shape {
      * specified by arguments width and height.
      */
     public void move(int width, int height) {
-        super.move(width,height);
-        for(Shape s : nestingShapes){
-            s.move(width,height);
+        super.move(width, height);
+        for (Shape s : nestingShapes) {
+            s.move(s.parent.width(), s.parent.height());
         }
     }
 
-    public void drawCentredText(Painter painter) {
-        for(Shape s : nestingShapes) {
-            System.out.println(s.toString());
-            System.out.println(s.x()+","+s.y()+","+s.width()+","+s.height());
-            System.out.println(s.text);
-            if(s instanceof NestingShape && ((NestingShape) s).nestingShapes.size()==0)
-                continue;
-            //s.drawCentredText(painter);
-            painter.drawCentredText(s.x()+s.width()/2,s.y()+height()/2,s.text);
+    public void paintText(Painter painter) {
+        super.paintText(painter);
+        painter.translate(x, y);
+        for (Shape s : nestingShapes) {
+            s.paintText(painter);
         }
+        painter.translate(-x, -y);
     }
-
-
-
 }
