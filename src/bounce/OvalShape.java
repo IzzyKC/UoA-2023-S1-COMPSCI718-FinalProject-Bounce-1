@@ -22,6 +22,10 @@ public class OvalShape extends Shape{
         super(x, y, deltaX, deltaY);
     }
 
+    public OvalShape(int x, int y, int deltaX, int deltaY, String text) {
+        super(x, y, deltaX, deltaY, text);
+    }
+
     /**
      * Creates a OvalShape instance with specified values for instance
      * variables.

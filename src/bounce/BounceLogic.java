@@ -93,9 +93,11 @@ public class BounceLogic {
      * speccified by arguments width and height.
      */
     public void moveSubNestingShapes() {
-        if(subNestingShapes == null || subNestingShapes.size() ==0) return;
+        if(subNestingShapes.size() == 0 ) return;
         for(Shape s : subNestingShapes) {
+
             s.move(s.parent.width(), s.parent.height());
+
         }
     }
 }
