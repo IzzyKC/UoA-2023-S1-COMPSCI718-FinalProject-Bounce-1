@@ -109,8 +109,7 @@ public abstract class Shape {
     /**
      * Moves this Shape object within the specified bounds. On hitting a
      * boundary the Shape instance bounces off and back into the two-dimensional world.
-     *
-     *The priority of bounce off vetical walls is always higher than horizontal walls.
+     * The priority of bounce off vetical walls is always higher than horizontal walls.
      * Thus check bounce off vertical walls later.
      *
      * @param width  width of two-dimensional world.
@@ -154,6 +153,7 @@ public abstract class Shape {
      * Method to be implemented by concrete subclasses to handle subclass
      * specific painting.
      * This is a hook method of paint(Template method)
+     *
      * @param painter the Painter object used for drawing.
      */
     public abstract void paint(Painter painter);
@@ -278,13 +278,13 @@ public abstract class Shape {
      * This is a hook method of paint(Template Method)
      */
     public void paintText(Painter painter) {
-        painter.drawCentredText( centerX() , centerY(), text);
+        painter.drawCentredText(centerX(), centerY(), text);
     }
 
     /**
      * This is a template method of painting shape and text.
      */
-    public void draw(Painter painter){
+    public void draw(Painter painter) {
         paint(painter);
         paintText(painter);
 

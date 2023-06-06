@@ -35,12 +35,14 @@ public interface Painter {
 
     /**
      * return the current color
+     *
      * @return current color
      */
     Color getColor();
 
     /**
      * sets the value of color
+     *
      * @param color specified color
      */
     void setColor(Color color);

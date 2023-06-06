@@ -69,7 +69,7 @@ public class GraphicsPainter implements Painter {
     }
 
     @Override
-    public void fillRect(int x, int y, int width, int height,Color color) {
+    public void fillRect(int x, int y, int width, int height, Color color) {
         g.setColor(color);
         g.fillRect(x, y, width, height);
     }
@@ -86,7 +86,7 @@ public class GraphicsPainter implements Painter {
 
     @Override
     public void drawCentredText(int x, int y, String text) {
-        if(text == null) return;
+        if (text == null) return;
         FontMetrics fm = g.getFontMetrics();
         int ascent = fm.getAscent();
         int descent = fm.getDescent();
