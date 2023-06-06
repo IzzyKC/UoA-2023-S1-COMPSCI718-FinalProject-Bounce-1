@@ -209,14 +209,6 @@ public abstract class Shape {
         return getClass().getName();
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     public void setDeltaX(int deltaX) {
         this.deltaX = deltaX;
     }
