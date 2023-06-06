@@ -28,6 +28,11 @@ public class DynamicRectangleShape extends Shape {
         this.color = color;
     }
 
+    public DynamicRectangleShape(String text, Color color) {
+        super(text);
+        this.color = color;
+    }
+
     /**
      * Creates a Shape object with a specified x and y position.
      */
@@ -37,12 +42,21 @@ public class DynamicRectangleShape extends Shape {
 
     }
 
-
     /**
      * Creates a Shape object with a specified x ,y and color.
      */
     public DynamicRectangleShape(int x, int y, Color color) {
         super(x, y);
+        this.color = color;
+    }
+
+    public DynamicRectangleShape(int x, int y, String text) {
+        super(x, y, text);
+        this.color = DEFAULT_COLOR;
+    }
+
+    public DynamicRectangleShape(int x, int y, String text, Color color) {
+        super(x, y, text);
         this.color = color;
     }
 
@@ -61,6 +75,11 @@ public class DynamicRectangleShape extends Shape {
         this.color = DEFAULT_COLOR;
     }
 
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, String text) {
+        super(x, y, deltaX, deltaY, text);
+        this.color = DEFAULT_COLOR;
+    }
+
     /**
      * Creates a GemShape instance with specified values for instance
      * variables.
@@ -73,6 +92,11 @@ public class DynamicRectangleShape extends Shape {
      */
     public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, Color color) {
         super(x, y, deltaX, deltaY);
+        this.color = color;
+    }
+
+    public DynamicRectangleShape(int x, int y, int deltaX, int deltaY, String text, Color color) {
+        super(x, y, deltaX, deltaY, text);
         this.color = color;
     }
 
