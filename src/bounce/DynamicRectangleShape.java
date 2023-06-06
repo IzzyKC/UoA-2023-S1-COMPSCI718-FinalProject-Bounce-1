@@ -135,7 +135,7 @@ public class DynamicRectangleShape extends Shape {
         } else {
             painter.drawRect(x, y, width, height);
         }
-        painter.setColor(DEFAULT_COLOR);
+        painter.setColor(currentColor);
     }
 
     public Color getColor() {
