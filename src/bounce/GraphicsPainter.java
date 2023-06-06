@@ -1,7 +1,6 @@
 package bounce;
 
 import java.awt.*;
-import java.util.List;
 
 /**
  * Implementation of the Painter interface that delegates drawing to a
@@ -12,10 +11,6 @@ import java.util.List;
 public class GraphicsPainter implements Painter {
     // Delegate object.
     private Graphics g;
-
-    private int worldWidth;
-
-    private int worldHeight;
 
     /**
      * Creates a GraphicsPainter object and sets its Graphics delegate.
@@ -45,7 +40,7 @@ public class GraphicsPainter implements Painter {
      * vertices are both positioned at point (x+width/2, y). Similarly, the bottom-left and
      * bottom-right vertices are both positioned at point (x+width/2, y+height). In other
      * words, “small” GemShapes are four-sided figures.
-     * drawing starts from left-most vertex and proceeding in a clock-wise direction.
+     * drawing starts from left-most vertex and proceeding in a clockwise direction.
      */
     @Override
     public void drawGemShape(int x, int y, int width, int height) {

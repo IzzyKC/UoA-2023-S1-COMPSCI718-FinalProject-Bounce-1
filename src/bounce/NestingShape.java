@@ -155,10 +155,7 @@ public class NestingShape extends Shape {
     public boolean contains(Shape shape) {
         if (this.nestingShapes == null || this.nestingShapes.size() == 0)
             return false;
-        if (this.nestingShapes.contains(shape))
-            return true;
-        else
-            return false;
+        return this.nestingShapes.contains(shape);
     }
 
     /**

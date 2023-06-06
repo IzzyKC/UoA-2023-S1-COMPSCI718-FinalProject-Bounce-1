@@ -1,7 +1,6 @@
 package bounce;
 
 import java.awt.*;
-import java.util.List;
 
 /**
  * Implementation of the Painter interface that does not actually do any
@@ -16,9 +15,6 @@ public class MockPainter implements Painter {
     private StringBuffer log = new StringBuffer();
 
     private Color color;
-
-    private int worldWidth;
-    private int worldHeight;
 
     /**
      * Returns the contents of this MockPainter's log.

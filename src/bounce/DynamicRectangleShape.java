@@ -162,8 +162,4 @@ public class DynamicRectangleShape extends Shape {
         painter.setColor(currentColor);
     }
 
-    public Color getColor() {
-        return color;
-    }
-
 }

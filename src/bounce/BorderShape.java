@@ -1,7 +1,5 @@
 package bounce;
 
-import java.util.List;
-
 public class BorderShape extends Shape {
     protected static final int DEFAULT_PADDING = 2;
 
@@ -23,14 +21,6 @@ public class BorderShape extends Shape {
         this.deltaY = innerShape.deltaY();
         this.width = innerShape.width() + 2 * 2 * paddingNum;
         this.height = innerShape.height() + 2 * 2 * paddingNum;
-    }
-
-    public Shape getInnerShape() {
-        return innerShape;
-    }
-
-    public List<Shape> getBorders() {
-        return null;
     }
 
     @Override
