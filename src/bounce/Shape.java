@@ -209,18 +209,30 @@ public abstract class Shape {
         return getClass().getName();
     }
 
+    /**
+     * Returns this Shape's DeltaX.
+     */
     public void setDeltaX(int deltaX) {
         this.deltaX = deltaX;
     }
 
+    /**
+     * Returns this Shape's DeltaY.
+     */
     public void setDeltaY(int deltaY) {
         this.deltaY = deltaY;
     }
 
+    /**
+     * Returns this Shape's width.
+     */
     public void setWidth(int width) {
         this.width = width;
     }
 
+    /**
+     * Returns this Shape's height.
+     */
     public void setHeight(int height) {
         this.height = height;
     }
@@ -257,10 +269,23 @@ public abstract class Shape {
         return path;
     }
 
+    /**
+     * Returns this Shape's text.
+     */
+    public String text(){
+        return this.text;
+    }
+
+    /**
+     * Returns this Shape's center position of X-axis.
+     */
     public int centerX() {
         return x + width / 2;
     }
 
+    /**
+     * Returns this Shape's center position of Y-axis.
+     */
     public int centerY() {
         return y + height / 2;
     }
