@@ -112,7 +112,7 @@ public class NestingShape extends Shape {
     }
 
     /**
-     * Returns the Shape at a specified position within a Nesting Shape. If the positon specified is
+     * Returns the Shape at a specified position within a Nesting Shape. If the position specified is
      * less than zero or greater than the number of children stored in the NestingShape less than one
      * this method throws an IndexOutBounds Exception.
      *
