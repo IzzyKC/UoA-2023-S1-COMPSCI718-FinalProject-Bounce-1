@@ -1,7 +1,6 @@
 package bounce;
 
 import java.awt.*;
-import java.util.List;
 
 /**
  * Interface to represent a type that offers primitive drawing methods.
@@ -50,5 +49,6 @@ public interface Painter {
     void drawCentredText(int x, int y, String text);
 
     void translate(int x, int y);
+
 
 }
