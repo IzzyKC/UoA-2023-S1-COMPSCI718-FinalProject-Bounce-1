@@ -67,7 +67,7 @@ public class AnimationViewer extends JPanel implements ActionListener {
             Shape gemShape = new GemShape(50, 50, 1, 1, 35, 45);
             Shape borderShape = new BorderShape(new OvalShape(50, 60, 3, 3, 20, 30,"4"), 4);
             Shape simpleShape = new DynamicRectangleShape(50, 50, 5, 6, 25, 20, "M2", Color.RED);
-            Shape simpleShape2 = new DynamicRectangleShape(1, 1, 3, 4, 10, 10, "M1", Color.BLUE);
+            Shape simpleShape2 = new DynamicRectangleShape(1, 1, 1, 2, 15, 20, "M1", Color.BLUE);
             bottomLevelNest.add(simpleShape2);
             midLevelNest.add(bottomLevelNest);
             midLevelNest.add(simpleShape);
