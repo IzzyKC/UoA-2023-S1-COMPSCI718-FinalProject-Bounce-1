@@ -8,8 +8,7 @@ public class BorderShape extends Shape {
     protected Shape innerShape;
 
     public BorderShape(Shape innerShape) {
-        this.innerShape = innerShape;
-        this.paddingNum = DEFAULT_PADDING;
+        this(innerShape, DEFAULT_PADDING);
     }
 
     public BorderShape(Shape innerShape, int paddingNum) {
@@ -21,6 +20,7 @@ public class BorderShape extends Shape {
         this.deltaY = innerShape.deltaY();
         this.width = innerShape.width() + 2 * 2 * paddingNum;
         this.height = innerShape.height() + 2 * 2 * paddingNum;
+
     }
 
     @Override
@@ -28,13 +28,14 @@ public class BorderShape extends Shape {
         this.bounceLogic.getBorderShapeItemsShapes().clear();
         this.bounceLogic.getBorderShapeItemsShapes().add(innerShape);
         generateBorders(innerShape);
-        for(Shape s: this.bounceLogic.getBorderShapeItemsShapes()){
+        for (Shape s : this.bounceLogic.getBorderShapeItemsShapes()) {
             s.draw(painter);
         }
     }
 
     /**
      * counts the x,y,widthand height of a BorderShape object by a given innerShape
+     *
      * @param innerShape a given shape within a BorderShape object
      */
     private void generateBorders(Shape innerShape) {
@@ -63,6 +64,7 @@ public class BorderShape extends Shape {
 
     /**
      * paints text of a BorderShape object
+     *
      * @param painter a painter
      */
     public void paintText(Painter painter) {
