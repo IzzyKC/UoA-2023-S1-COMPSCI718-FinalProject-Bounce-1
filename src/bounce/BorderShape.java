@@ -33,6 +33,10 @@ public class BorderShape extends Shape {
         }
     }
 
+    /**
+     * counts the x,y,widthand height of a BorderShape object by a given innerShape
+     * @param innerShape a given shape within a BorderShape object
+     */
     private void generateBorders(Shape innerShape) {
         int borderX = innerShape.x();
         int borderY = innerShape.y();
@@ -57,6 +61,10 @@ public class BorderShape extends Shape {
 
     }
 
+    /**
+     * paints text of a BorderShape object
+     * @param painter a painter
+     */
     public void paintText(Painter painter) {
         innerShape.paintText(painter);
     }

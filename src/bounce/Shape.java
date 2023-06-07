@@ -152,7 +152,7 @@ public abstract class Shape {
     /**
      * Method to be implemented by concrete subclasses to handle subclass
      * specific painting.
-     * This is a hook method of paint(Template method)
+     * This is a hook method of draw(Template method)
      *
      * @param painter the Painter object used for drawing.
      */
@@ -292,7 +292,7 @@ public abstract class Shape {
 
     /**
      * Paints the centered text for this shape.
-     * This is a hook method of paint(Template Method)
+     * This is a hook method of draw(Template Method)
      */
     public void paintText(Painter painter) {
         painter.drawCentredText(centerX(), centerY(), text);
