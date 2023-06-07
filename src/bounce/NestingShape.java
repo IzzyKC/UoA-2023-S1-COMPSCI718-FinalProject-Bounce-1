@@ -162,6 +162,7 @@ public class NestingShape extends Shape {
      * Moves a NestingShape object (including Children) within bounds
      * specified by arguments width and height.
      */
+    @Override
     public void move(int width, int height) {
         super.move(width, height);
         for (Shape s : nestingShapes) {

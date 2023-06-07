@@ -43,8 +43,6 @@ public abstract class Shape {
 
     protected int height;
 
-    protected BounceLogic bounceLogic;
-
     //parent of NestingShape child
     protected NestingShape parent;
 
@@ -102,7 +100,6 @@ public abstract class Shape {
         this.width = width;
         this.height = height;
         this.text = text;
-        this.bounceLogic = new BounceLogic();
     }
 
     /**
@@ -121,24 +118,18 @@ public abstract class Shape {
         if (nextY <= 0) {
             nextY = 0;
             deltaY = -deltaY;
-            bounceLogic.changeBorderShapeItemDeltaY(nextY - y);
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
-            bounceLogic.changeBorderShapeItemDeltaY(y - nextY);
         }
 
         if (nextX <= 0) {
             nextX = 0;
             deltaX = -deltaX;
-            bounceLogic.changeBorderShapeItemDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
-            bounceLogic.changeBorderShapeItemDeltaX(x - nextX);
         }
-
-        bounceLogic.moveBorderShapeItems(width, height, deltaX, deltaY);
 
         x = nextX;
         y = nextY;
@@ -205,33 +196,43 @@ public abstract class Shape {
     }
 
     /**
-     * Returns this Shape's DeltaX.
+     * sets this Shape's x position.
      */
     public void setDeltaX(int deltaX) {
         this.deltaX = deltaX;
     }
 
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     /**
-     * Returns this Shape's DeltaY.
+     * sets this Shape's y position.
      */
-    public void setDeltaY(int deltaY) {
+    public void setDeltaY(int y) {
         this.deltaY = deltaY;
     }
 
     /**
      * Returns this Shape's width.
      */
+    /**
     public void setWidth(int width) {
         this.width = width;
     }
-
+*/
     /**
      * Returns this Shape's height.
      */
+    /**
     public void setHeight(int height) {
         this.height = height;
     }
-
+*/
     /**
      * Returns the NestingShape that contains the Shape that method parent
      * is called on. If the callee object is not a child with in a
@@ -299,7 +300,6 @@ public abstract class Shape {
     public void draw(Painter painter) {
         paint(painter);
         paintText(painter);
-
     }
 
 }
