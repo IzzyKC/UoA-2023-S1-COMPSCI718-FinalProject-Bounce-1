@@ -196,43 +196,35 @@ public abstract class Shape {
     }
 
     /**
-     * sets this Shape's x position.
+     * sets this Shape's deltaX.
      */
     public void setDeltaX(int deltaX) {
         this.deltaX = deltaX;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    /**
+     * sets this Shape's deltaY
+     */
+    public void setDeltaY(int deltaY) {
+        this.deltaY = deltaY;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    /**
+     * sets this Shape's x position.
+     */
+    public void setX(int x) {
+        this.x = x;
     }
 
     /**
      * sets this Shape's y position.
      */
-    public void setDeltaY(int y) {
-        this.deltaY = deltaY;
+    public void setY(int y) {
+        this.y = y;
     }
 
-    /**
-     * Returns this Shape's width.
-     */
-    /**
-    public void setWidth(int width) {
-        this.width = width;
-    }
-*/
-    /**
-     * Returns this Shape's height.
-     */
-    /**
-    public void setHeight(int height) {
-        this.height = height;
-    }
-*/
+
+
     /**
      * Returns the NestingShape that contains the Shape that method parent
      * is called on. If the callee object is not a child with in a

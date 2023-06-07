@@ -6,13 +6,11 @@ import java.util.List;
 public class BorderShape extends Shape {
     protected static final int DEFAULT_PADDING = 2;
 
-    protected static final int borderGapPixel = 2;
-
     protected int paddingNum;
 
     protected Shape innerShape;
 
-    protected List<Shape> borderItems = new ArrayList<>();
+    protected List<Shape> borderRects = new ArrayList<>();
 
     public BorderShape(Shape innerShape) {
         this(innerShape, DEFAULT_PADDING);
@@ -26,22 +24,26 @@ public class BorderShape extends Shape {
         this.deltaY = innerShape.deltaY();
     }
 
+    /**
+     * paints the innerShape object and its borders
+     * @param painter the Painter object used for drawing.
+     */
     @Override
     public void paint(Painter painter) {
         generateBorders(innerShape);
-        for (Shape s : borderItems) {
+        innerShape.draw(painter);
+        for (Shape s : borderRects) {
             s.draw(painter);
         }
     }
 
     /**
-     * counts the x,y,widthand height of a BorderShape object by a given innerShape
+     * creates all shape objects within this BorderShape Object
      *
      * @param innerShape a given shape within a BorderShape object
      */
     private void generateBorders(Shape innerShape) {
-        this.borderItems.clear();
-        this.borderItems.add(innerShape);
+        this.borderRects.clear();
         int borderX = innerShape.x();
         int borderY = innerShape.y();
         int borderWidth = innerShape.width();
@@ -52,25 +54,16 @@ public class BorderShape extends Shape {
             borderY = borderY - 2;
             borderWidth = borderWidth + (2 + 2);
             borderHeight = borderHeight + (2 + 2);
-            borderItems.add(new RectangleShape(borderX, borderY,
+            borderRects.add(new RectangleShape(borderX, borderY,
                     innerShape.deltaX(), innerShape.deltaY(), borderWidth, borderHeight));
         }
-    }
-
-    /**
-     * paints text of a BorderShape object
-     *
-     * @param painter a painter
-     */
-    @Override
-    public void paintText(Painter painter) {
-        innerShape.paintText(painter);
     }
 
     /**
      * calculates the x,y,width and height of this BorderShape object by its InnerShape
      * move this borderShape, then calculates the innerShape position
      * and updates the deltaX and deltaY of innerShape after moving
+     *
      * @param width  width of two-dimensional world.
      * @param height height of two-dimensional world.
      */
@@ -80,9 +73,9 @@ public class BorderShape extends Shape {
         this.y = innerShape.y() - 2 * paddingNum;
         this.width = innerShape.width() + 2 * 2 * paddingNum;
         this.height = innerShape.height() + 2 * 2 * paddingNum;
-        super.move(width,height);
-        innerShape.setX(x+2*paddingNum);
-        innerShape.setY(y+2*paddingNum);
+        super.move(width, height);
+        innerShape.setX(x + 2 * paddingNum);
+        innerShape.setY(y + 2 * paddingNum);
         innerShape.setDeltaX(deltaX);
         innerShape.setDeltaY(deltaY);
     }
