@@ -42,7 +42,6 @@ public abstract class Shape {
     protected int width;
 
     protected int height;
-    protected boolean isBounceOffVertical;
 
     protected BounceLogic bounceLogic;
 
@@ -122,24 +121,20 @@ public abstract class Shape {
         if (nextY <= 0) {
             nextY = 0;
             deltaY = -deltaY;
-            isBounceOffVertical = false;
             bounceLogic.changeBorderShapeItemDeltaY(nextY - y);
         } else if (nextY + this.height >= height) {
             nextY = height - this.height;
             deltaY = -deltaY;
-            isBounceOffVertical = false;
             bounceLogic.changeBorderShapeItemDeltaY(y - nextY);
         }
 
         if (nextX <= 0) {
             nextX = 0;
             deltaX = -deltaX;
-            isBounceOffVertical = true;
             bounceLogic.changeBorderShapeItemDeltaX(nextX - x);
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
-            isBounceOffVertical = true;
             bounceLogic.changeBorderShapeItemDeltaX(x - nextX);
         }
 

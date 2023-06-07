@@ -67,7 +67,7 @@ public class NestingShape extends Shape {
         painter.drawRect(x, y, width, height);
         painter.translate(x, y);
         for (Shape s : this.nestingShapes) {
-            s.paint(painter);
+            s.draw(painter);
         }
         painter.translate(-x, -y);
     }
@@ -172,6 +172,7 @@ public class NestingShape extends Shape {
     /**
      * Paints a NestingShape object (including Children).
      */
+    @Override
     public void paintText(Painter painter) {
         super.paintText(painter);
         painter.translate(x, y);

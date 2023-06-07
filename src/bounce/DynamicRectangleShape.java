@@ -5,6 +5,8 @@ import java.awt.*;
 public class DynamicRectangleShape extends Shape {
     protected Color color;
 
+    protected boolean isBounceOffVertical;
+
 
     /**
      * Default constructor that creates a DynamicRectangleShape instance whose instance
@@ -160,6 +162,19 @@ public class DynamicRectangleShape extends Shape {
             painter.drawRect(x, y, width, height);
         }
         painter.setColor(currentColor);
+    }
+
+    /**
+     * @param width  width of two-dimensional world.
+     * @param height height of two-dimensional world.
+     */
+    @Override
+    public void move(int width, int height) {
+        super.move(width, height);
+        if (y == 0 || (height - this.height == y))
+            isBounceOffVertical = false;
+        if (x == 0 || (width - this.width == x))
+            isBounceOffVertical = true;
     }
 
 }
