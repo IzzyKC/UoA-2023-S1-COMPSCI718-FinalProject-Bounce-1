@@ -169,17 +169,4 @@ public class NestingShape extends Shape {
             s.move(s.parent.width(), s.parent.height());
         }
     }
-
-    /**
-     * Paints a NestingShape object (including Children).
-     */
-    @Override
-    public void paintText(Painter painter) {
-        super.paintText(painter);
-        painter.translate(x, y);
-        for (Shape s : nestingShapes) {
-            s.paintText(painter);
-        }
-        painter.translate(-x, -y);
-    }
 }
