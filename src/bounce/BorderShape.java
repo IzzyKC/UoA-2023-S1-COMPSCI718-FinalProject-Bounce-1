@@ -8,12 +8,17 @@ public class BorderShape extends Shape {
     protected Shape innerShape;
 
     public BorderShape(Shape innerShape) {
-        this(innerShape, DEFAULT_PADDING);
+        this(innerShape, DEFAULT_PADDING, DEFAULT_Text);
     }
 
     public BorderShape(Shape innerShape, int paddingNum) {
+        this(innerShape, paddingNum, DEFAULT_Text);
+    }
+
+    public BorderShape(Shape innerShape, int paddingNum, String text) {
         this.innerShape = innerShape;
         this.paddingNum = paddingNum;
+        this.text = text;
         this.x = innerShape.x() - 2 * paddingNum;
         this.y = innerShape.y() - 2 * paddingNum;
         this.deltaX = innerShape.deltaX();
@@ -68,6 +73,7 @@ public class BorderShape extends Shape {
      * @param painter a painter
      */
     public void paintText(Painter painter) {
+        super.paintText(painter);
         innerShape.paintText(painter);
     }
 

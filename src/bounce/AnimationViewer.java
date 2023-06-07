@@ -55,7 +55,7 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new DynamicRectangleShape(120, 250, 3, 5, 75, 75, "DR-PINK", Color.PINK));
         shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 75, 50, "DR-GREEN", Color.GREEN));
         shapes.add(new BorderShape(new OvalShape(75, 100, 2, 3, 80, 45, "InnerShape"), 5));
-        shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 35, 45), 10));
+        shapes.add(new BorderShape(new GemShape(120, 100, 6, 3, 35, 45), 10,"10"));
         shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 90, 45,"DF_BORDER")));
 
 
