@@ -129,15 +129,15 @@ public class TestBorderShape {
      */
     @Test
     public void testBorderShapeMoveBounceOffTopAndLeft() {
-        BorderShape borderShape = new BorderShape(new OvalShape(8,10,-5,-5,20,30));
+        BorderShape borderShape = new BorderShape(new OvalShape(8,4,-5,-5,20,30));
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
-        assertEquals("(oval 8,10,20,30)(rectangle 6,8,24,34)(rectangle 4,6,28,38)"+
-                        "(oval 4,5,20,30)(rectangle 2,3,24,34)(rectangle 0,1,28,38)"+
-                        "(oval 9,4,20,30)(rectangle 7,2,24,34)(rectangle 5,0,28,38)",
+        assertEquals("(oval 8,4,20,30)(rectangle 6,2,24,34)(rectangle 4,0,28,38)"+
+                        "(oval 4,4,20,30)(rectangle 2,2,24,34)(rectangle 0,0,28,38)"+
+                        "(oval 9,9,20,30)(rectangle 7,7,24,34)(rectangle 5,5,28,38)",
                 painter.toString());
     }
 
@@ -147,13 +147,13 @@ public class TestBorderShape {
      */
     @Test
     public void testBorderShapeMoveBounceOffBottomAndLeft() {
-        BorderShape borderShape = new BorderShape(new OvalShape(8,90,-5,5,20,30));
+        BorderShape borderShape = new BorderShape(new OvalShape(8,100,-5,5,20,30));
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
-        assertEquals("(oval 8,90,20,30)(rectangle 6,88,24,34)(rectangle 4,86,28,38)"+
+        assertEquals("(oval 8,100,20,30)(rectangle 6,98,24,34)(rectangle 4,96,28,38)"+
                         "(oval 4,86,20,30)(rectangle 2,84,24,34)(rectangle 0,82,28,38)"+
                         "(oval 9,81,20,30)(rectangle 7,79,24,34)(rectangle 5,77,28,38)",
                 painter.toString());
@@ -165,13 +165,13 @@ public class TestBorderShape {
      */
     @Test
     public void testBorderShapeMoveBounceOffBottomAndRight() {
-        BorderShape borderShape = new BorderShape(new OvalShape(95,95,5,5,20,30));
+        BorderShape borderShape = new BorderShape(new OvalShape(100,100,5,5,20,30));
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
-        assertEquals("(oval 95,95,20,30)(rectangle 93,93,24,34)(rectangle 91,91,28,38)"+
+        assertEquals("(oval 100,100,20,30)(rectangle 98,98,24,34)(rectangle 96,96,28,38)"+
                         "(oval 96,86,20,30)(rectangle 94,84,24,34)(rectangle 92,82,28,38)"+
                         "(oval 91,81,20,30)(rectangle 89,79,24,34)(rectangle 87,77,28,38)",
                 painter.toString());
