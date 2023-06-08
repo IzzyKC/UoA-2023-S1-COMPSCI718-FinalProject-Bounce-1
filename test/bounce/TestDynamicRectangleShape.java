@@ -20,6 +20,17 @@ public class TestDynamicRectangleShape {
         painter = new MockPainter();
     }
 
+    @Test
+    public void testSimpleMove() {
+        DynamicRectangleShape shape = new DynamicRectangleShape(10, 20, 5, 5,
+                10, 20);
+        shape.paint(painter);
+        shape.move(500, 500);
+        shape.paint(painter);
+        assertEquals("(rectangle 10,20,10,20)(rectangle 15,25,10,20)",
+                painter.toString());
+    }
+
     /**
      * Test to perform a bounce off Left walls and changes its appearance to solid figure
      * then bounces off top walls and renders itself with an outline
@@ -147,7 +158,9 @@ public class TestDynamicRectangleShape {
         shape.paint(painter);
         shape.move(130, 60);
         shape.paint(painter);
-        assertEquals("(rectangle 20,15,10,30)(rectangle 8,0,10,30)(filled rectangle 0,20,10,30,java.awt.Color[r=255,g=0,b=0])",
+        assertEquals("(rectangle 20,15,10,30)" +
+                        "(rectangle 8,0,10,30)" +
+                        "(filled rectangle 0,20,10,30,java.awt.Color[r=255,g=0,b=0])",
                 painter.toString());
     }
 
@@ -164,7 +177,9 @@ public class TestDynamicRectangleShape {
         shape.paint(painter);
         shape.move(130, 60);
         shape.paint(painter);
-        assertEquals("(rectangle 100,15,10,30)(rectangle 112,0,10,30)(filled rectangle 120,20,10,30,java.awt.Color[r=255,g=0,b=0])",
+        assertEquals("(rectangle 100,15,10,30)" +
+                        "(rectangle 112,0,10,30)" +
+                        "(filled rectangle 120,20,10,30,java.awt.Color[r=255,g=0,b=0])",
                 painter.toString());
     }
 
@@ -174,12 +189,12 @@ public class TestDynamicRectangleShape {
      */
     @Test
     public void testBounceOffTopAndRight() {
-        DynamicRectangleShape shape = new DynamicRectangleShape(105, 15, 12, -20,
+        DynamicRectangleShape shape = new DynamicRectangleShape(110, 15, 12, -20,
                 10, 30, Color.RED);
         shape.paint(painter);
         shape.move(120, 40);
         shape.paint(painter);
-        assertEquals("(rectangle 105,15,10,30)" +
+        assertEquals("(rectangle 110,15,10,30)" +
                         "(filled rectangle 110,0,10,30,java.awt.Color[r=255,g=0,b=0])",
                 painter.toString());
     }
@@ -222,12 +237,12 @@ public class TestDynamicRectangleShape {
      */
     @Test
     public void testBounceOffBottomAndRight() {
-        DynamicRectangleShape shape = new DynamicRectangleShape(110, 45, 12, 20,
+        DynamicRectangleShape shape = new DynamicRectangleShape(115, 45, 12, 20,
                 10, 30, Color.RED);
         shape.paint(painter);
         shape.move(120, 60);
         shape.paint(painter);
-        assertEquals("(rectangle 110,45,10,30)" +
+        assertEquals("(rectangle 115,45,10,30)" +
                         "(filled rectangle 110,30,10,30,java.awt.Color[r=255,g=0,b=0])",
                 painter.toString());
 
