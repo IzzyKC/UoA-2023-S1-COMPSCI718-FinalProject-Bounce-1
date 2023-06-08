@@ -54,15 +54,15 @@ public class TestGemShape {
      */
     @Test
     public void testSmallGemShapeMoveWithBounceOffRight() {
-        GemShape small = new GemShape(100, 20, 12, 15, 20, 30);
+        GemShape small = new GemShape(110, 20, 12, 15, 20, 30);
         small.paint(painter);
         small.move(135, 10000);
         small.paint(painter);
         small.move(135, 10000);
         small.paint(painter);
-        assertEquals("{small (100,35),(110,20),(120,35),(110,50),20,30}"
-                + "{small (112,50),(122,35),(132,50),(122,65),20,30}"
-                + "{small (115,65),(125,50),(135,65),(125,80),20,30}", painter.toString());
+        assertEquals("{small (110,35),(120,20),(130,35),(120,50),20,30}"
+                + "{small (115,50),(125,35),(135,50),(125,65),20,30}"
+                + "{small (103,65),(113,50),(123,65),(113,80),20,30}", painter.toString());
     }
 
     /**
@@ -88,15 +88,15 @@ public class TestGemShape {
      */
     @Test
     public void testSmallGemShapeMoveWithBounceOffLeft() {
-        GemShape small = new GemShape(100, 20, -12, 15, 20, 30);
+        GemShape small = new GemShape(10, 20, -12, 15, 20, 30);
         small.paint(painter);
         small.move(10000, 10000);
         small.paint(painter);
         small.move(10000, 10000);
         small.paint(painter);
-        assertEquals("{small (100,35),(110,20),(120,35),(110,50),20,30}"
-                + "{small (88,50),(98,35),(108,50),(98,65),20,30}"
-                + "{small (76,65),(86,50),(96,65),(86,80),20,30}", painter.toString());
+        assertEquals("{small (10,35),(20,20),(30,35),(20,50),20,30}"
+                + "{small (0,50),(10,35),(20,50),(10,65),20,30}"
+                + "{small (12,65),(22,50),(32,65),(22,80),20,30}", painter.toString());
     }
 
     /**
@@ -105,15 +105,15 @@ public class TestGemShape {
      */
     @Test
     public void testRegularGemShapeMoveWithBounceOffLeft() {
-        GemShape regular = new GemShape(100, 20, -12, 15, 60, 30);
+        GemShape regular = new GemShape(10, 20, -12, 15, 60, 30);
         regular.paint(painter);
         regular.move(10000, 10000);
         regular.paint(painter);
         regular.move(10000, 10000);
         regular.paint(painter);
-        assertEquals("{regular (100,35),(120,20),(140,20),(160,35),(140,50),(120,50),60,30}"
-                + "{regular (88,50),(108,35),(128,35),(148,50),(128,65),(108,65),60,30}"
-                + "{regular (76,65),(96,50),(116,50),(136,65),(116,80),(96,80),60,30}", painter.toString());
+        assertEquals("{regular (10,35),(30,20),(50,20),(70,35),(50,50),(30,50),60,30}"
+                + "{regular (0,50),(20,35),(40,35),(60,50),(40,65),(20,65),60,30}"
+                + "{regular (12,65),(32,50),(52,50),(72,65),(52,80),(32,80),60,30}", painter.toString());
     }
 
     /**
@@ -122,15 +122,15 @@ public class TestGemShape {
      */
     @Test
     public void testSmallShapeMoveWithBounceOffBottomAndRight() {
-        GemShape small = new GemShape(100, 20, 12, 15, 20, 30);
+        GemShape small = new GemShape(115, 120, 12, 15, 20, 30);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
-        assertEquals("{small (100,35),(110,20),(120,35),(110,50),20,30}"
-                + "{small (105,50),(115,35),(125,50),(115,65),20,30}"
-                + "{small (93,65),(103,50),(113,65),(103,80),20,30}", painter.toString());
+        assertEquals("{small (115,135),(125,120),(135,135),(125,150),20,30}"
+                + "{small (105,120),(115,105),(125,120),(115,135),20,30}"
+                + "{small (93,105),(103,90),(113,105),(103,120),20,30}", painter.toString());
     }
 
     /**
@@ -139,15 +139,48 @@ public class TestGemShape {
      */
     @Test
     public void testRegularShapeMoveWithBounceOffBottomAndRight() {
-        GemShape regular = new GemShape(100, 20, 12, 15, 60, 30);
+        GemShape regular = new GemShape(60, 100, 12, 15, 60, 30);
         regular.paint(painter);
         regular.move(125, 135);
         regular.paint(painter);
         regular.move(125, 135);
         regular.paint(painter);
-        assertEquals("{regular (100,35),(120,20),(140,20),(160,35),(140,50),(120,50),60,30}"
-                + "{regular (65,50),(85,35),(105,35),(125,50),(105,65),(85,65),60,30}"
-                + "{regular (53,65),(73,50),(93,50),(113,65),(93,80),(73,80),60,30}", painter.toString());
+        assertEquals("{regular (60,115),(80,100),(100,100),(120,115),(100,130),(80,130),60,30}"
+                + "{regular (65,120),(85,105),(105,105),(125,120),(105,135),(85,135),60,30}"
+                + "{regular (53,105),(73,90),(93,90),(113,105),(93,120),(73,120),60,30}", painter.toString());
+    }
+    /**
+     * Test to perform a bounce movement off the bottom right corner and to
+     * ensure that the small gem Shape's position after the movement is correct.
+     */
+    @Test
+    public void testSmallShapeMoveWithBounceOffTopAndLeft() {
+        GemShape small = new GemShape(10, 10, 12, 15, 20, 30);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        assertEquals("{small (10,25),(20,10),(30,25),(20,40),20,30}"
+                + "{small (22,40),(32,25),(42,40),(32,55),20,30}"
+                + "{small (34,55),(44,40),(54,55),(44,70),20,30}", painter.toString());
+    }
+
+    /**
+     * Test to perform a bounce movement off the bottom right corner and to
+     * ensure that the regular gem Shape's position after the movement is correct.
+     */
+    @Test
+    public void testRegularShapeMoveWithBounceOffTopAndLeft() {
+        GemShape regular = new GemShape(10, 10, 12, 15, 60, 30);
+        regular.paint(painter);
+        regular.move(125, 135);
+        regular.paint(painter);
+        regular.move(125, 135);
+        regular.paint(painter);
+        assertEquals("{regular (10,25),(30,10),(50,10),(70,25),(50,40),(30,40),60,30}"
+                + "{regular (22,40),(42,25),(62,25),(82,40),(62,55),(42,55),60,30}"
+                + "{regular (34,55),(54,40),(74,40),(94,55),(74,70),(54,70),60,30}", painter.toString());
     }
 
 }
