@@ -26,6 +26,7 @@ public class BorderShape extends Shape {
 
     /**
      * paints the innerShape object and its borders
+     *
      * @param painter the Painter object used for drawing.
      */
     @Override

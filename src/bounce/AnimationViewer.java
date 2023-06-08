@@ -50,13 +50,13 @@ public class AnimationViewer extends JPanel implements ActionListener {
         shapes.add(new GemShape(20, 70, 3, 6));
         shapes.add(new GemShape(20, 70, 5, 5, 70, 50));
         shapes.add(new GemShape(20, 70, 5, 5, 200, 200, "Hexagon"));
-        shapes.add(new DynamicRectangleShape(450,450,"DR",Color.CYAN));
+        shapes.add(new DynamicRectangleShape(450, 450, "DR", Color.CYAN));
         shapes.add(new DynamicRectangleShape(30, 50, 7, 5, 100, 50, "DR-YELLOW", Color.YELLOW));
         shapes.add(new DynamicRectangleShape(120, 250, 3, 5, 75, 75, "DR-PINK", Color.PINK));
         shapes.add(new DynamicRectangleShape(20, 70, 3, 5, 75, 50, "DR-GREEN", Color.GREEN));
         shapes.add(new BorderShape(new OvalShape(0, 0, 2, 3, 80, 45, "InnerShape"), 5));
         shapes.add(new BorderShape(new GemShape(120, 100, 6, 3, 35, 45), 10));
-        shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 90, 45,"DF_BORDER")));
+        shapes.add(new BorderShape(new GemShape(120, 100, 4, 3, 90, 45, "DF_BORDER")));
 
 
         //add NestingShape
@@ -65,7 +65,7 @@ public class AnimationViewer extends JPanel implements ActionListener {
             NestingShape midLevelNest = new NestingShape(0, 0, 1, 1, 150, 150, "Mid");
             NestingShape bottomLevelNest = new NestingShape(2, 2, 2, 2, 50, 50, "Btm");
             Shape gemShape = new GemShape(50, 50, 1, 1, 35, 45);
-            Shape borderShape = new BorderShape(new OvalShape(50, 60, 3, 3, 20, 30,"4"), 4);
+            Shape borderShape = new BorderShape(new OvalShape(50, 60, 3, 3, 20, 30, "4"), 4);
             Shape simpleShape = new DynamicRectangleShape(50, 50, 5, 6, 25, 20, "M2", Color.RED);
             Shape simpleShape2 = new DynamicRectangleShape(1, 1, 1, 2, 15, 20, "M1", Color.BLUE);
             bottomLevelNest.add(simpleShape2);

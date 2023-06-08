@@ -224,7 +224,6 @@ public abstract class Shape {
     }
 
 
-
     /**
      * Returns the NestingShape that contains the Shape that method parent
      * is called on. If the callee object is not a child with in a
@@ -260,7 +259,7 @@ public abstract class Shape {
     /**
      * Returns this Shape's text.
      */
-    public String text(){
+    public String text() {
         return this.text;
     }
 

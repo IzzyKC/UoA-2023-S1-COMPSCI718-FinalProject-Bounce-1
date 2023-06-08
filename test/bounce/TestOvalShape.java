@@ -7,6 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestOvalShape {
     private MockPainter painter;
+
     /**
      * This method is called automatically by the JUnit test-runner immediately
      * before each @Test method is executed. setUp() recreates the fixture so
@@ -30,6 +31,7 @@ public class TestOvalShape {
         assertEquals("(oval 100,20,25,35)(oval 112,35,25,35)",
                 painter.toString());
     }
+
     /**
      * Test to perform a bounce movement off the right-most boundary and to
      * ensure that the Shape's position after the movement is correct.

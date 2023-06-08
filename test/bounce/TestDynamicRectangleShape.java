@@ -196,7 +196,7 @@ public class TestDynamicRectangleShape {
      */
     @Test
     public void testBounceOffBottomAndLeft() {
-        DynamicRectangleShape shape = new DynamicRectangleShape(25,45 , -15, 20,
+        DynamicRectangleShape shape = new DynamicRectangleShape(25, 45, -15, 20,
                 10, 30, Color.RED);
         shape.paint(painter);
         shape.move(120, 60);

@@ -7,6 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestGemShape {
     private MockPainter painter;
+
     /**
      * This method is called automatically by the JUnit test-runner immediately
      * before each @Test method is executed. setUp() recreates the fixture so
@@ -23,11 +24,11 @@ public class TestGemShape {
      */
     @Test
     public void testSmallGemShapeSimpleMove() {
-        GemShape small = new GemShape(100, 20, 12, 15,30,40);
+        GemShape small = new GemShape(100, 20, 12, 15, 30, 40);
         small.paint(painter);
         small.move(500, 500);
         small.paint(painter);
-        assertEquals("{small (100,40),(115,20),(130,40),(115,60),30,40}"+
+        assertEquals("{small (100,40),(115,20),(130,40),(115,60),30,40}" +
                         "{small (112,55),(127,35),(142,55),(127,75),30,40}",
                 painter.toString());
     }
@@ -38,11 +39,11 @@ public class TestGemShape {
      */
     @Test
     public void testRegularGemShapeSimpleMove() {
-        GemShape regular = new GemShape(100, 20, 12, 15,80,60);
+        GemShape regular = new GemShape(100, 20, 12, 15, 80, 60);
         regular.paint(painter);
         regular.move(500, 500);
         regular.paint(painter);
-        assertEquals("{regular (100,50),(120,20),(160,20),(180,50),(160,80),(120,80),80,60}"+
+        assertEquals("{regular (100,50),(120,20),(160,20),(180,50),(160,80),(120,80),80,60}" +
                         "{regular (112,65),(132,35),(172,35),(192,65),(172,95),(132,95),80,60}",
                 painter.toString());
     }
@@ -53,7 +54,7 @@ public class TestGemShape {
      */
     @Test
     public void testSmallGemShapeMoveWithBounceOffRight() {
-        GemShape small = new GemShape(100, 20, 12, 15,20,30);
+        GemShape small = new GemShape(100, 20, 12, 15, 20, 30);
         small.paint(painter);
         small.move(135, 10000);
         small.paint(painter);
@@ -70,7 +71,7 @@ public class TestGemShape {
      */
     @Test
     public void testRegularGemShapeMoveWithBounceOffRight() {
-        GemShape regular = new GemShape(100, 20, 12, 15,60,30);
+        GemShape regular = new GemShape(100, 20, 12, 15, 60, 30);
         regular.paint(painter);
         regular.move(135, 10000);
         regular.paint(painter);
@@ -87,7 +88,7 @@ public class TestGemShape {
      */
     @Test
     public void testSmallGemShapeMoveWithBounceOffLeft() {
-        GemShape small = new GemShape(100, 20, -12, 15,20,30);
+        GemShape small = new GemShape(100, 20, -12, 15, 20, 30);
         small.paint(painter);
         small.move(10000, 10000);
         small.paint(painter);
@@ -104,7 +105,7 @@ public class TestGemShape {
      */
     @Test
     public void testRegularGemShapeMoveWithBounceOffLeft() {
-        GemShape regular = new GemShape(100, 20, -12, 15,60,30);
+        GemShape regular = new GemShape(100, 20, -12, 15, 60, 30);
         regular.paint(painter);
         regular.move(10000, 10000);
         regular.paint(painter);
@@ -121,7 +122,7 @@ public class TestGemShape {
      */
     @Test
     public void testSmallShapeMoveWithBounceOffBottomAndRight() {
-        GemShape small = new GemShape(100, 20, 12, 15,20,30);
+        GemShape small = new GemShape(100, 20, 12, 15, 20, 30);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
@@ -138,7 +139,7 @@ public class TestGemShape {
      */
     @Test
     public void testRegularShapeMoveWithBounceOffBottomAndRight() {
-        GemShape regular = new GemShape(100, 20, 12, 15,60,30);
+        GemShape regular = new GemShape(100, 20, 12, 15, 60, 30);
         regular.paint(painter);
         regular.move(125, 135);
         regular.paint(painter);
