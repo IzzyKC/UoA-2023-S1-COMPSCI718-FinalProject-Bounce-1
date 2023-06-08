@@ -115,20 +115,20 @@ public abstract class Shape {
         int nextX = x + deltaX;
         int nextY = y + deltaY;
 
-        if (nextY <= 0) {
-            nextY = 0;
-            deltaY = -deltaY;
-        } else if (nextY + this.height >= height) {
-            nextY = height - this.height;
-            deltaY = -deltaY;
-        }
-
         if (nextX <= 0) {
             nextX = 0;
             deltaX = -deltaX;
         } else if (nextX + this.width >= width) {
             nextX = width - this.width;
             deltaX = -deltaX;
+        }
+
+        if (nextY <= 0) {
+            nextY = 0;
+            deltaY = -deltaY;
+        } else if (nextY + this.height >= height) {
+            nextY = height - this.height;
+            deltaY = -deltaY;
         }
 
         x = nextX;
@@ -230,7 +230,6 @@ public abstract class Shape {
      * NestingShape instance this method returns null .
      */
     public NestingShape parent() {
-
         return this.parent != null ? this.parent : null;
     }
 
