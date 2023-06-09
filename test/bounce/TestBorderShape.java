@@ -34,7 +34,7 @@ public class TestBorderShape {
                         "(oval 42,53,20,30)(rectangle 40,51,24,34)(rectangle 38,49,28,38)(rectangle 36,47,32,42)",
                 painter.toString());
 
-        //check the given padding numbers equals the shape's border numbers
+        //check the specified padding numbers equals the shape's border numbers
         assertEquals(borderShape.getPaddingNum(), borderShape.getBorderRects().size());
     }
 
