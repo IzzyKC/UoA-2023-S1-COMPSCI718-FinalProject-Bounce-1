@@ -64,6 +64,7 @@ public class BorderShape extends Shape {
      * calculates the x,y,width and height of this BorderShape object by its InnerShape
      * move this borderShape, then calculates the innerShape position
      * and updates the deltaX and deltaY of innerShape after moving
+     * Note: if bounce off walls , deltaX or deltaY changes for different moving directions
      *
      * @param width  width of two-dimensional world.
      * @param height height of two-dimensional world.
