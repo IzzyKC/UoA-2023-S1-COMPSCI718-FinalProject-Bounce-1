@@ -166,6 +166,7 @@ public class TestGemShape {
                 + "{small (0,120),(10,105),(20,120),(10,135),20,30}"
                 + "{small (12,105),(22,90),(32,105),(22,120),20,30}", painter.toString());
     }
+
     /**
      * Test to perform a bounce movement off the bottom left corner and to
      * ensure that the small gem Shape's position after the movement is correct.
