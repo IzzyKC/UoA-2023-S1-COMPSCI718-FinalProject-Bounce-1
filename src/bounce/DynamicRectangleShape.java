@@ -166,6 +166,10 @@ public class DynamicRectangleShape extends Shape {
     }
 
     /**
+     * move the DynamicRectangleShape object
+     * and checks the moved x and y position if this shape bounce off vertical(left,right)
+     * or horizontal(top,bottom) walls
+     *
      * @param width  width of two-dimensional world.
      * @param height height of two-dimensional world.
      */
@@ -177,5 +181,4 @@ public class DynamicRectangleShape extends Shape {
         if (x == 0 || (width - this.width == x))
             isBounceOffVertical = true;
     }
-
 }
