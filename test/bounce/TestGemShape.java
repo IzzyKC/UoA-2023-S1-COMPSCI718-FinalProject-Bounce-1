@@ -71,13 +71,13 @@ public class TestGemShape {
      */
     @Test
     public void testRegularGemShapeMoveWithBounceOffRight() {
-        GemShape regular = new GemShape(100, 20, 12, 15, 60, 30);
+        GemShape regular = new GemShape(65, 20, 12, 15, 60, 30);
         regular.paint(painter);
         regular.move(135, 10000);
         regular.paint(painter);
         regular.move(135, 10000);
         regular.paint(painter);
-        assertEquals("{regular (100,35),(120,20),(140,20),(160,35),(140,50),(120,50),60,30}"
+        assertEquals("{regular (65,35),(85,20),(105,20),(125,35),(105,50),(85,50),60,30}"
                 + "{regular (75,50),(95,35),(115,35),(135,50),(115,65),(95,65),60,30}"
                 + "{regular (63,65),(83,50),(103,50),(123,65),(103,80),(83,80),60,30}", painter.toString());
     }
@@ -122,13 +122,13 @@ public class TestGemShape {
      */
     @Test
     public void testSmallShapeMoveWithBounceOffBottomAndRight() {
-        GemShape small = new GemShape(115, 120, 12, 15, 20, 30);
+        GemShape small = new GemShape(100, 100, 12, 15, 20, 30);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
-        assertEquals("{small (115,135),(125,120),(135,135),(125,150),20,30}"
+        assertEquals("{small (100,115),(110,100),(120,115),(110,130),20,30}"
                 + "{small (105,120),(115,105),(125,120),(115,135),20,30}"
                 + "{small (93,105),(103,90),(113,105),(103,120),20,30}", painter.toString());
     }
@@ -149,38 +149,107 @@ public class TestGemShape {
                 + "{regular (65,120),(85,105),(105,105),(125,120),(105,135),(85,135),60,30}"
                 + "{regular (53,105),(73,90),(93,90),(113,105),(93,120),(73,120),60,30}", painter.toString());
     }
+
     /**
-     * Test to perform a bounce movement off the bottom right corner and to
+     * Test to perform a bounce movement off the bottom left corner and to
+     * ensure that the small gem Shape's position after the movement is correct.
+     */
+    @Test
+    public void testSmallShapeMoveWithBounceOffBottomAndLeft() {
+        GemShape small = new GemShape(10, 100, -12, 15, 20, 30);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        assertEquals("{small (10,115),(20,100),(30,115),(20,130),20,30}"
+                + "{small (0,120),(10,105),(20,120),(10,135),20,30}"
+                + "{small (12,105),(22,90),(32,105),(22,120),20,30}", painter.toString());
+    }
+    /**
+     * Test to perform a bounce movement off the bottom left corner and to
+     * ensure that the small gem Shape's position after the movement is correct.
+     */
+    @Test
+    public void testRegularShapeMoveWithBounceOffBottomAndLeft() {
+        GemShape small = new GemShape(10, 100, -12, 15, 60, 30);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        assertEquals("{regular (10,115),(30,100),(50,100),(70,115),(50,130),(30,130),60,30}" +
+                "{regular (0,120),(20,105),(40,105),(60,120),(40,135),(20,135),60,30}" +
+                "{regular (12,105),(32,90),(52,90),(72,105),(52,120),(32,120),60,30}", painter.toString());
+    }
+
+
+    /**
+     * Test to perform a bounce movement off the top left corner and to
      * ensure that the small gem Shape's position after the movement is correct.
      */
     @Test
     public void testSmallShapeMoveWithBounceOffTopAndLeft() {
-        GemShape small = new GemShape(10, 10, 12, 15, 20, 30);
+        GemShape small = new GemShape(10, 10, -12, -15, 20, 30);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
         small.move(125, 135);
         small.paint(painter);
         assertEquals("{small (10,25),(20,10),(30,25),(20,40),20,30}"
-                + "{small (22,40),(32,25),(42,40),(32,55),20,30}"
-                + "{small (34,55),(44,40),(54,55),(44,70),20,30}", painter.toString());
+                + "{small (0,15),(10,0),(20,15),(10,30),20,30}"
+                + "{small (12,30),(22,15),(32,30),(22,45),20,30}", painter.toString());
     }
 
     /**
-     * Test to perform a bounce movement off the bottom right corner and to
+     * Test to perform a bounce movement off the top left corner and to
      * ensure that the regular gem Shape's position after the movement is correct.
      */
     @Test
     public void testRegularShapeMoveWithBounceOffTopAndLeft() {
-        GemShape regular = new GemShape(10, 10, 12, 15, 60, 30);
+        GemShape regular = new GemShape(10, 10, -12, -15, 60, 30);
         regular.paint(painter);
         regular.move(125, 135);
         regular.paint(painter);
         regular.move(125, 135);
         regular.paint(painter);
         assertEquals("{regular (10,25),(30,10),(50,10),(70,25),(50,40),(30,40),60,30}"
-                + "{regular (22,40),(42,25),(62,25),(82,40),(62,55),(42,55),60,30}"
-                + "{regular (34,55),(54,40),(74,40),(94,55),(74,70),(54,70),60,30}", painter.toString());
+                + "{regular (0,15),(20,0),(40,0),(60,15),(40,30),(20,30),60,30}"
+                + "{regular (12,30),(32,15),(52,15),(72,30),(52,45),(32,45),60,30}", painter.toString());
+    }
+
+    /**
+     * Test to perform a bounce movement off the top right corner and to
+     * ensure that the small gem Shape's position after the movement is correct.
+     */
+    @Test
+    public void testSmallShapeMoveWithBounceOffTopAndRight() {
+        GemShape small = new GemShape(100, 10, 12, -15, 20, 30);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        small.move(125, 135);
+        small.paint(painter);
+        assertEquals("{small (100,25),(110,10),(120,25),(110,40),20,30}" +
+                "{small (105,15),(115,0),(125,15),(115,30),20,30}" +
+                "{small (93,30),(103,15),(113,30),(103,45),20,30}", painter.toString());
+    }
+
+    /**
+     * Test to perform a bounce movement off the top right corner and to
+     * ensure that the regular gem Shape's position after the movement is correct.
+     */
+    @Test
+    public void testRegularShapeMoveWithBounceOffTopAndRight() {
+        GemShape regular = new GemShape(60, 10, 12, -15, 60, 30);
+        regular.paint(painter);
+        regular.move(125, 135);
+        regular.paint(painter);
+        regular.move(125, 135);
+        regular.paint(painter);
+        assertEquals("{regular (60,25),(80,10),(100,10),(120,25),(100,40),(80,40),60,30}" +
+                "{regular (65,15),(85,0),(105,0),(125,15),(105,30),(85,30),60,30}" +
+                "{regular (53,30),(73,15),(93,15),(113,30),(93,45),(73,45),60,30}", painter.toString());
     }
 
 }
