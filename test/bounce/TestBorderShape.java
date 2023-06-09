@@ -63,13 +63,13 @@ public class TestBorderShape {
      */
     @Test
     public void testBorderShapeMoveBounceOffBottom() {
-        BorderShape borderShape = new BorderShape(new OvalShape(20, 100, 5, 8, 20, 30));
+        BorderShape borderShape = new BorderShape(new OvalShape(20, 85, 5, 8, 20, 30));
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
         borderShape.move(120, 120);
         borderShape.paint(painter);
-        assertEquals("(oval 20,100,20,30)(rectangle 18,98,24,34)(rectangle 16,96,28,38)" +
+        assertEquals("(oval 20,85,20,30)(rectangle 18,83,24,34)(rectangle 16,81,28,38)" +
                         "(oval 25,86,20,30)(rectangle 23,84,24,34)(rectangle 21,82,28,38)" +
                         "(oval 30,78,20,30)(rectangle 28,76,24,34)(rectangle 26,74,28,38)",
                 painter.toString());
@@ -99,15 +99,15 @@ public class TestBorderShape {
      */
     @Test
     public void testBorderShapeMoveBounceOffRight() {
-        BorderShape borderShape = new BorderShape(new OvalShape(100, 90, 5, 6, 20, 30));
+        BorderShape borderShape = new BorderShape(new OvalShape(95, 90, 5, 6, 20, 30));
         borderShape.paint(painter);
-        borderShape.move(120, 120);
+        borderShape.move(120, 150);
         borderShape.paint(painter);
-        borderShape.move(120, 120);
+        borderShape.move(120, 150);
         borderShape.paint(painter);
-        assertEquals("(oval 100,90,20,30)(rectangle 98,88,24,34)(rectangle 96,86,28,38)" +
-                        "(oval 96,86,20,30)(rectangle 94,84,24,34)(rectangle 92,82,28,38)" +
-                        "(oval 91,80,20,30)(rectangle 89,78,24,34)(rectangle 87,76,28,38)",
+        assertEquals("(oval 95,90,20,30)(rectangle 93,88,24,34)(rectangle 91,86,28,38)" +
+                        "(oval 96,96,20,30)(rectangle 94,94,24,34)(rectangle 92,92,28,38)" +
+                        "(oval 91,102,20,30)(rectangle 89,100,24,34)(rectangle 87,98,28,38)",
                 painter.toString());
     }
 
