@@ -20,6 +20,10 @@ public class TestDynamicRectangleShape {
         painter = new MockPainter();
     }
 
+    /**
+     * Test to perform a simple (non-bouncing) movement, and to ensure that a
+     * DynamicRectangle Shape's position after the movement is correct.
+     */
     @Test
     public void testSimpleMove() {
         DynamicRectangleShape shape = new DynamicRectangleShape(10, 20, 5, 5,
