@@ -26,13 +26,15 @@ public class TestBorderShape {
     @Test
     public void testSimpleMoveAndPaddingNums() {
         BorderShape borderShape = new BorderShape(new OvalShape(40, 50, 2, 3, 20, 30)
-                ,3);
+                , 3);
         borderShape.paint(painter);
         borderShape.move(500, 500);
         borderShape.paint(painter);
         assertEquals("(oval 40,50,20,30)(rectangle 38,48,24,34)(rectangle 36,46,28,38)(rectangle 34,44,32,42)" +
                         "(oval 42,53,20,30)(rectangle 40,51,24,34)(rectangle 38,49,28,38)(rectangle 36,47,32,42)",
                 painter.toString());
+
+        //check the given padding numbers equals the shape's border numbers
         assertEquals(borderShape.getPaddingNum(), borderShape.getBorderRects().size());
     }
 
