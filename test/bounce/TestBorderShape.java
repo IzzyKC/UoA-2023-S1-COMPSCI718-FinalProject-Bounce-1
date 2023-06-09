@@ -21,7 +21,7 @@ public class TestBorderShape {
     /**
      * Test to perform a simple (non-bouncing) movement, and to ensure that a
      * border Shape's position after the movement is correct.
-     * Test if the given paddingNums equals the BorderShape's border numbers
+     * Test if the specified paddingNums equals the BorderShape's border numbers
      */
     @Test
     public void testSimpleMoveAndPaddingNums() {
