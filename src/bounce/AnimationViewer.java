@@ -76,6 +76,8 @@ public class AnimationViewer extends JPanel implements ActionListener {
             topLevelNest.add(midLevelNest);
             shapes.add(topLevelNest);
         } catch (IllegalArgumentException e) {
+            System.out.println("Illegal Argument Error: " + e.getMessage());
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
