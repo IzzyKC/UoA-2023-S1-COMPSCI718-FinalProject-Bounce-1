@@ -25,6 +25,24 @@ public class BorderShape extends Shape {
     }
 
     /**
+     * returns the padding number
+     *
+     * @return padding number
+     */
+    public int getPaddingNum() {
+        return paddingNum;
+    }
+
+    /**
+     * returns a list of borders
+     *
+     * @return list of borders
+     */
+    public List<Shape> getBorderRects() {
+        return borderRects;
+    }
+
+    /**
      * paints the innerShape object and its borders
      *
      * @param painter the Painter object used for drawing.
