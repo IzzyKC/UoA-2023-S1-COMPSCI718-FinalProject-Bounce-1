@@ -21,8 +21,7 @@ public interface Painter {
     void drawOval(int x, int y, int width, int height);
 
     /**
-     * Draws a gemshape. Parameters x and y specify the top left corner of the
-     * oval. Parameters width and height specify its width and height.
+     * Draws a GemShape from left-most vertex and proceeding in a clockwise direction
      */
     void drawGemShape(int x, int y, int width, int height);
 
@@ -46,8 +45,20 @@ public interface Painter {
      */
     void setColor(Color color);
 
+    /**
+     * draws centered text of any shape object
+     * @param x x position
+     * @param y y position
+     * @param text printed text
+     */
     void drawCentredText(int x, int y, String text);
 
+    /**
+     * adjust the coordinate system by specifying a new origin
+     * that corresponds toa point in the original coordinate system.
+     * @param x x position
+     * @param y y position
+     */
     void translate(int x, int y);
 
 
